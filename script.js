@@ -1,13 +1,23 @@
-let loadData = document.querySelector("#load")
+// let baseURL = https://www.yelp.com/search/snippet?find_desc=Halal&find_loc=Singapore&limit=50
 
-loadData.addEventListener('click', async function(){
-    //let response = await axios.get(baseURL + '?lat=' + lat + '?lng=' + lng)
-    //let response = await axios.get(baseURL+id)
-    let response = await axios.get("data.json");
-    console.log(response.data)
+let searchBtn = document.querySelector("#search-btn")
+searchBtn.addEventListener('click', ()=>{
+    let searchValue = document.querySelector("#search-bar").value;
+    //console.log(searchValue)
+
 })
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     let oriAddress = 
+
+// let loadData = document.querySelector("#load")
+
+// loadData.addEventListener('click', async function(){
+//     let response = await axios.get("data.json");
+//     //console.log(response.data)
 // })
+
+window.addEventListener('DOMContentLoaded', async () => {
+   let listOfPlaces = await loadData();
+   console.log(listOfPlaces);
+   loadMap();
+})
 

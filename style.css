@@ -12,5 +12,8 @@
     width: 70vh;
     height: 50px;
     border-radius: 20px;
-    
+}
+
+#map {
+    height:80vh;
 }
