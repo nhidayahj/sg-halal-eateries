@@ -31,6 +31,17 @@
     border-radius: 10px;
 }
 
+#collapseCuisine {
+    background-color: rgba(115, 199, 6, 0.3);
+}
+
+.cuisineOptions {
+    
+    margin-bottom: 0%;
+    padding: 10px;
+    font-size: 20px;
+}
+
 #map {
     height:80vh;
 }

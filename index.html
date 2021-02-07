@@ -23,7 +23,15 @@
                 <input type="text" name="search-bar" id="search-bar"
                     placeholder="       enter location or type restaurant's name ">
                 <button type="button" class="btn btn-secondary" id="search-btn">Find</button>
-                <button type="button" class="btn btn-info" id="filter-btn">Filter By</button>
+                <button type="button" class="btn btn-info" id="filter-btn" data-toggle="collapse"
+                    data-target="#collapseCuisine">Filter By</button>
+            </div>
+        </div>
+        <div class="collapse" id="collapseCuisine">
+            <div class="row justify-content-center filter-section ">
+                <p class="col-2 cuisineOptions">Cuisine Type</p>
+                <p class="col-2 cuisineOptions">Price Range</p>
+                <p class="col-2 cuisineOptions">Zone</p>
             </div>
         </div>
         <div class="map-area mt-2">

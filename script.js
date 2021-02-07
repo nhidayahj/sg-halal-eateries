@@ -1,11 +1,11 @@
-// let baseURL = https://www.yelp.com/search/snippet?find_desc=Halal&find_loc=Singapore&limit=50
 
 let searchBtn = document.querySelector("#search-btn")
-searchBtn.addEventListener('click', ()=>{
+searchBtn.addEventListener('click', async ()=>{
     let searchValue = document.querySelector("#search-bar").value;
-    //console.log(searchValue)
-
+    console.log(searchValue)
+  
 })
+
 
 
 // let loadData = document.querySelector("#load")
