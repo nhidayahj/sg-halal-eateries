@@ -41,7 +41,9 @@
     font-size: 20px;
 }
 
-
+.cuisine-checkbox {
+    height: 100px;
+}
 
 #map {
     height:80vh;
