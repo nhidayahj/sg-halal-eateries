@@ -22,17 +22,18 @@ async function getCuisineType() {
     return cuisineArr;
 }
 
-async function createCuisineCheckBox() {
-    let cuisineArr = await getCuisineType();
-    for (let i of cuisineArr) {
-        let cuisineCheckbox = document.querySelector(".cuisine-checkbox")
-        let input = document.createElement("input")
-        input.setAttribute("type", "checkbox");
-        input.className="cuisine";
-        input.name=i;
-        input.value = i.toLowerCase().replace(" ","-");
-        cuisineCheckbox.appendChild(input);
-        console.log(input)
-    }
-    
-}
+// async function createCuisineCheckBox() {
+//     let cuisineArr = await getCuisineType();
+//     for (let i of cuisineArr) {
+//         //let cuisineCheckbox = document.querySelector(".cuisine-checkbox")
+//         let input = document.createElement("input")
+//         input.setAttribute("type", "checkbox");
+//         input.className="cuisine";
+//         input.name=i;
+//         input.innerHTML=i;
+//         input.value = i.toLowerCase().replace(" ","-");
+//         //cuisineCheckbox.appendChild(input);
+       
+//         // console.log(input)
+//     }
+// }

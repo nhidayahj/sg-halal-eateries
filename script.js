@@ -17,25 +17,14 @@ searchBtn.addEventListener('click', async () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     let listOfPlaces = await loadData();
-    console.log(listOfPlaces);
+    console.log("All the list: ", listOfPlaces);
     loadMap();
-    let cuisineArr = getCuisineType()
-    console.log(cuisineArr)
+    let cuisineArr = await getCuisineType()
+    console.log("all cuisine:" ,cuisineArr)
+   
+    
 
-
-    // Show Modal view for Cuisine type 
-    let filterByCuisine = document.querySelector("#cuisineType");
-    let optionsSet = {
-        backdrop: true,
-        keyboard: true,
-        focus: true,
-        show: true
-    }
-
-    filterByCuisine.addEventListener('click', () => {
-        $('#cuisineList').modal(optionsSet);
-        let displayCuisine = createCuisineCheckBox();
-    })
+    
 
 })
 
