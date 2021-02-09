@@ -33,8 +33,15 @@ async function createCuisineCheckBox() {
         <p>
         `
         dropdownOption.innerHTML += newCheckBox;
-        console.log(newCheckBox)
     }
 }
 
-//get the selected cuisine type from the filter 
+
+// determine price range list 
+// cheap = 1;
+// mid-range=2;
+// ex=3; 
+
+// function (data) {
+//     for (let i of data)
+// }
