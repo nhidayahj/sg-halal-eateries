@@ -3,6 +3,9 @@
     height:20vh;
 }
 
+.title {
+    font-size: 30px;
+}
 
 .search-bar {
     margin-top: 30px;
@@ -41,8 +44,10 @@
     font-size: 20px;
 }
 
-.cuisine-checkbox {
-    height: 100px;
+
+a#cuisineBtn {
+    text-decoration: none;
+    color:green;
 }
 
 #map {

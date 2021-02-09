@@ -22,8 +22,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     let cuisineArr = await getCuisineType()
     console.log("all cuisine:" ,cuisineArr)
    
-    
-
+    let dropdownOption = document.querySelector(".displayCuisine")
+    for(let i of cuisineArr) {
+        let newCheckBox = `
+        <input type="checkbox" class="cuisine" name="${i}" value="${i.toLowerCase().replace(" ","-")}"/>
+        <label>${i}</label>
+        <p>
+        `
+        dropdownOption.innerHTML += newCheckBox;
+    }
     
 
 })

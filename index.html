@@ -18,7 +18,7 @@
 <body>
     <div class="container-fluid">
         <div class="search-area">
-            <h1 class="display-3 d-flex justify-content-center">search halal places</h1>
+            <h1 class="title display-3 d-flex justify-content-center">search halal places</h1>
             <div class="search-bar d-flex flex-sm-wrap justify-content-center">
                 <input type="text" name="search-bar" id="search-bar"
                     placeholder="       enter location or type restaurant's name ">
@@ -29,42 +29,43 @@
         </div>
         <!-- Collapsable Filter menu list -->
         <div class="collapse" id="filterOptions">
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown">
-                    By Cuisine
-                </a>
-
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+            <div class="row justify-content-center filter-section ">
+                <!-- <a class="col-2 cuisineOptions" href="#" role="button" id="cuisineType" data-toggle="modal"
+                    data-target="#cuisineList">Cuisine Type</a> -->
+                <a class="col-2 cuisineOptions" id= "cuisineBtn" href="#" role="button" id="cuisineType" data-toggle="modal"
+                    data-target="#cuisineList">Cuisine
+                    Type</a>
+                <p class="col-2 cuisineOptions">Price Range</p>
+                <p class="col-2 cuisineOptions">Zone</p>
             </div>
-            <!-- Price Range  -->
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown">
-                    Price Range
-                </a>
+        </div>
+        <!-- Modal Pop-up for Cuisine List -->
 
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </div>
-            <!-- By Zones -->
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown">
-                    Zones
-                </a>
-
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+        <!-- Modal -->
+        <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Cuisine</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="displayCuisine col-6">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-success">Apply</button>
+                    </div>
                 </div>
             </div>
         </div>
