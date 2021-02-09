@@ -27,27 +27,33 @@ window.addEventListener('DOMContentLoaded', async () => {
         //console.log(userCuisineSelection)
     })
 
-    let priceList = {}
-    let affordable = [];
-    let mid_range = [];
-    let expensive = [];
-
+    // categories data by their price range
+    let priceList = {
+        'affordable':[],
+        'mid_range': [],
+        'expensive':[]
+    }
 
     for (let i of listOfPlaces.moreBusinesses) {
         if (i.priceRange) {
             if (i.priceRange == 1) {
-                affordable.push(i.name);
+                priceList['affordable'].push(i.name);
             } else if (i.priceRange == 2) {
-                mid_range.push(i.name)
+                priceList['mid_range'].push(i.name);
             } else if (i.priceRange >= 3) {
-                expensive.push(i.name)
+                priceList['expensrive'].push(i.name);
             }
         }
-        priceList['affordable'] = affordable;
-        priceList['mid_range'] = mid_range;
-        priceList['expensive'] = expensive;
     }
-    // console.log(priceList)
+    //console.log(priceList)
+
+
+    //get the user's price selection from the dropdown
+
+
+    //find the lat-lng of each restaurant
+
+
 })
     
     
