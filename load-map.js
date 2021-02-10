@@ -13,22 +13,41 @@
 
 
 
-let mapOfPlaces = loadData();
+
 // get all the addresses from data.json 
-function getDataAddress(data){
+let addresses = []
+function getDataAddress(data) {
     let addressCollection = data.moreBusinesses
-    let addresses = {}
     for (let i of addressCollection) {
-        console.log("Address List: ", i.addressLine1)
+        let wholeAdd = i.addressLine1 + ' ' + i.addressLine2;
+        addresses.push(wholeAdd)
     }
+    return addresses;
+}
+
+
+
+async function getLatLng (address) {
+    let add1 = address[0];
+    let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${add1}&returnGeom=Y&getAddrDetails=N`
+    let response = await axios.get(mapUrl)
+    console.log("From OneMap's: ", response.data)
 }
 
 // get individial lat-lng 
-params = {
-    'searchVal': "", 
-    'returnGeom': "Y", 
-    'getAddrDetails': "N"
-}
+// let mapBaseUrl = "https://developers.onemap.sg/commonapi/search"
+
+// async function getLatLng(addresses) {
+//     let response = await axios.get(mapBaseUrl, {
+//         params = {
+//             'searchVal': "${address}",
+//             'returnGeom': "Y",
+//             'getAddrDetails': "N"
+//         }
+//     })
+
+// }
+
 
 function loadMap(lat, lng) {
     let restaurant = [1.303220, 103.858790]; // #1 Singapore latlng

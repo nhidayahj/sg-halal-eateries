@@ -51,9 +51,13 @@ window.addEventListener('DOMContentLoaded', async () => {
     //get the user's price selection from the 'Price Range' dropdown
 
 
-    //find the lat-lng of each restaurant from data.json
-    getDataAddress(listOfPlaces)
+    //all restaurant's list
+    let add = getDataAddress(listOfPlaces)
+    console.log(add)
 
+    //find the lat-lng of each restaurant from data.json
+    //test map API
+    //getLatLng(add);
 
 })
     
