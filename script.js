@@ -48,10 +48,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     //console.log(priceList)
 
 
-    //get the user's price selection from the dropdown
+    //get the user's price selection from the 'Price Range' dropdown
 
 
-    //find the lat-lng of each restaurant
+    //find the lat-lng of each restaurant from data.json
+    getDataAddress(listOfPlaces)
 
 
 })

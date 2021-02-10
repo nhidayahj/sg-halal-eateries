@@ -11,8 +11,24 @@
 //         accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
 //     }).addTo(map);
 
-let mapOfPlaces = loadData();
 
+
+let mapOfPlaces = loadData();
+// get all the addresses from data.json 
+function getDataAddress(data){
+    let addressCollection = data.moreBusinesses
+    let addresses = {}
+    for (let i of addressCollection) {
+        console.log("Address List: ", i.addressLine1)
+    }
+}
+
+// get individial lat-lng 
+params = {
+    'searchVal': "", 
+    'returnGeom': "Y", 
+    'getAddrDetails': "N"
+}
 
 function loadMap(lat, lng) {
     let restaurant = [1.303220, 103.858790]; // #1 Singapore latlng
