@@ -42,11 +42,11 @@ window.addEventListener('DOMContentLoaded', async () => {
             } else if (i.priceRange == 2) {
                 priceList['mid_range'].push(i.name);
             } else if (i.priceRange >= 3) {
-                priceList['expensrive'].push(i.name);
+                priceList['expensive'].push(i.name);
             }
         }
     }
-    //console.log(priceList)
+    // console.log(priceList)
 
 
     //get the user's price selection from the 'Price Range' dropdown
@@ -55,15 +55,26 @@ window.addEventListener('DOMContentLoaded', async () => {
     //all restaurant's list
     //let add = getDataAddress(listOfPlaces)
     //console.log("original add:" ,add)
-    let add2 = getDataAddress2(listOfPlaces)
-    console.log("clean add:" , add2)
+    let all_addresses = getDataAddress2(listOfPlaces)
+    for (let i=0; i<all_addresses.length; i++) {
+        if (all_addresses[i].address == "2"){
+            all_addresses.splice(i,1)
+        } 
+    }
+    console.log("clean add:" , all_addresses)
 
+    let new_add = newAddObj(all_addresses);
+    console.log("with indexes: ", new_add);
 
 
     //find the lat-lng 
-    // newObj = await newLatLngObj(listOfPlaces.moreBusinesses, add2);
-    //console.log(newObj)
-    getLatLng(add2)
+    
+    // let lat_lng = await getLatLng(add2)
+    // console.log(lat_lng)
+
+    // newObj = await newLatLngObj(listOfPlaces, add2);
+    // console.log(newObj)
+    
     
 
 })

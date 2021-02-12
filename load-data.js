@@ -42,14 +42,3 @@ async function createCuisineCheckBox() {
 // async function mapLatLng() {
 //     let response = await axios.get(mapBaseUrl + 'search?')
 // }
-
-
-
-// determine price range list 
-// cheap = 1;
-// mid-range=2;
-// ex=3; 
-
-// function (data) {
-//     for (let i of data)
-// }
