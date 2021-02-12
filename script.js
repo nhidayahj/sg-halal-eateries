@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     let allData = await loadData()
     let listOfPlaces = allData.moreBusinesses;
     console.log("All the list: ", listOfPlaces);
-    loadMap();
+    
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
 
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         //console.log(userCuisineSelection)
     })
 
-    // categories data by their price range
+    // categorize data by their price range
     let priceList = {
         'affordable': [],
         'mid_range': [],
@@ -53,8 +53,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
     //all restaurant's list
-    //let add = getDataAddress(listOfPlaces)
-    //console.log("original add:" ,add)
     let allAddresses = getDataAddress2(listOfPlaces)
     for (let i = 0; i < allAddresses.length; i++) {
         if (allAddresses[i].full_address == "2") {
@@ -68,6 +66,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     let latLng = await getLatLng(allAddresses)
     console.log("found list: " ,latLng)
 
+    //loadMap(latLng);
 
 })
 
