@@ -41,21 +41,12 @@ function getDataAddress2(data) {
                 'address': data[i].addressLine1.slice(0, indexComma)
             })
         } 
-
     }
     return clean_add;
 }
 
 
-// include index parameter in newLatLng function
-function newAddObj (address) {
-    for (let i=0; i<address.length; i++) {
-        address.push({
-            'index':i
-        })
-    }
-    return address;
-}
+
 
 
 

@@ -30,9 +30,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     // categories data by their price range
     let priceList = {
-        'affordable':[],
+        'affordable': [],
         'mid_range': [],
-        'expensive':[]
+        'expensive': []
     }
 
     for (let i of listOfPlaces) {
@@ -56,30 +56,29 @@ window.addEventListener('DOMContentLoaded', async () => {
     //let add = getDataAddress(listOfPlaces)
     //console.log("original add:" ,add)
     let all_addresses = getDataAddress2(listOfPlaces)
-    for (let i=0; i<all_addresses.length; i++) {
-        if (all_addresses[i].address == "2"){
-            all_addresses.splice(i,1)
+    for (let i = 0; i < all_addresses.length; i++) {
+        if (all_addresses[i].address == "2") {
+            all_addresses.splice(i, 1)
         } 
     }
-    console.log("clean add:" , all_addresses)
+    console.log("clean add:", all_addresses)
 
-    let new_add = newAddObj(all_addresses);
-    console.log("with indexes: ", new_add);
+    
 
 
     //find the lat-lng 
-    
+
     // let lat_lng = await getLatLng(add2)
     // console.log(lat_lng)
 
     // newObj = await newLatLngObj(listOfPlaces, add2);
     // console.log(newObj)
-    
-    
+
+
 
 })
-    
-    
+
+
 
 
 
