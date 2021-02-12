@@ -53,7 +53,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     //all restaurant's list
     let add = getDataAddress(listOfPlaces)
-    console.log(add)
+    console.log("original add:" ,add)
+    let add2 = getDataAddress2(listOfPlaces)
+    console.log("clean add:" , add2)
 
     //find the lat-lng of each restaurant from data.json
     //test map API

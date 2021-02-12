@@ -15,15 +15,30 @@
 
 
 // get all the addresses from data.json 
-let addresses = []
+let all_addresses = []
 function getDataAddress(data) {
     let addressCollection = data.moreBusinesses
     for (let i of addressCollection) {
-        let wholeAdd = i.addressLine1 + ' ' + i.addressLine2;
-        addresses.push(wholeAdd)
+        all_addresses.push(i.addressLine1)
     }
-    return addresses;
+    return all_addresses;
 }
+
+// to only get the clean address for map API
+let cleanAddress = [];
+function getDataAddress2(data) {
+    let addressCollection = data.moreBusinesses;
+    for(let i of addressCollection) {
+        let indexComma = i.addressLine1.indexOf(",")
+        if (indexComma == -1) {
+            cleanAddress.push(i.addressLine1)
+        } else if (indexComma) {
+            cleanAddress.push(i.addressLine1.slice(0,indexComma))
+        }
+    }
+    return cleanAddress;
+}
+
 
 
 
