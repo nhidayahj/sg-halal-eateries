@@ -55,25 +55,18 @@ window.addEventListener('DOMContentLoaded', async () => {
     //all restaurant's list
     //let add = getDataAddress(listOfPlaces)
     //console.log("original add:" ,add)
-    let all_addresses = getDataAddress2(listOfPlaces)
-    for (let i = 0; i < all_addresses.length; i++) {
-        if (all_addresses[i].address == "2") {
-            all_addresses.splice(i, 1)
+    let allAddresses = getDataAddress2(listOfPlaces)
+    for (let i = 0; i < allAddresses.length; i++) {
+        if (allAddresses[i].full_address == "2") {
+            allAddresses.splice(i, 1)
         } 
     }
-    console.log("clean add:", all_addresses)
-
-    
+    console.log("clean add:", allAddresses)
 
 
     //find the lat-lng 
-
-    // let lat_lng = await getLatLng(add2)
-    // console.log(lat_lng)
-
-    // newObj = await newLatLngObj(listOfPlaces, add2);
-    // console.log(newObj)
-
+    let latLng = await getLatLng(allAddresses)
+    console.log("found list: " ,latLng)
 
 
 })

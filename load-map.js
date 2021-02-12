@@ -30,52 +30,48 @@ function getDataAddress(data) {
 let clean_add = []
 
 function getDataAddress2(data) {
-    for (let i=0; i<data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         let indexComma = data[i].addressLine1.indexOf(",")
         if (indexComma == -1) {
             clean_add.push({
-                'address':data[i].addressLine1
+                'name':data[i].name,
+                'full_address': data[i].addressLine1
             })
         } else if (indexComma) {
             clean_add.push({
-                'address': data[i].addressLine1.slice(0, indexComma)
+                'name':data[i].name,
+                'full_address': data[i].addressLine1.slice(0, indexComma)
             })
-        } 
+        }
     }
     return clean_add;
 }
 
 
 
+// getting the lat-lng for all the clean addresses 
+let newLatLngObj = []
+
+async function getLatLng(address) {
+    for (let i of address) {
+        let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.full_address}&returnGeom=Y&getAddrDetails=N`
+        let response = await axios.get(mapUrl)
+        let result = response.data
+        
+        // if there is a 'found' address, get the lat-lng
+        if(result.found) {
+            newLatLngObj.push({
+                'full_address':result.results[0]['SEARCHVAL'],
+                'latitude':result.results[0]['LATITUDE'],
+                'longitude':result.results[0]['LONGITUDE']
+            })
+        }
+    }
+    return newLatLngObj
+}
 
 
 
-
-
-// async function getLatLng(address) {
-//     for (let i = 0; i < address.length; i++) {
-//         newLatLngObj.push({
-//             'index': i
-//         })
-//     }
-    //console.log(newLatLngObj);
-   // let index = newLatLngObj.index
-    // let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${address[index]}&returnGeom=Y&getAddrDetails=N`
-    // let response = await axios.get(mapUrl)
-    // let result = response.data
-
-    // console.log("Found result: ", result)
-    // only if there is a 'found' value, then 
-    // take only the values of thte first index from the list 
-    // if (result.found) {
-    //     newLatLngObj.push({
-    //         'full_address': result.results[0]['SEARCHVAL'],
-    //         'latitude': result.results[0]['LATITUDE'],
-    //         'longitude': result.results[0]['LONGITUDE']
-    //     })
-    // }
-    // return newLatLngObj;
-//}
 
 // create a list of objects that stores name, clean address and its lat-lng
 
