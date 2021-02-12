@@ -27,27 +27,60 @@ function getDataAddress(data) {
 // to only get the clean address for map API
 let cleanAddress = [];
 function getDataAddress2(data) {
-    let addressCollection = data.moreBusinesses;
-    for(let i of addressCollection) {
+    for (let i of data) {
         let indexComma = i.addressLine1.indexOf(",")
         if (indexComma == -1) {
             cleanAddress.push(i.addressLine1)
         } else if (indexComma) {
-            cleanAddress.push(i.addressLine1.slice(0,indexComma))
+            cleanAddress.push(i.addressLine1.slice(0, indexComma))
         }
     }
     return cleanAddress;
 }
 
 
-
-
-async function getLatLng (address) {
-    let add1 = address[0];
+async function getLatLng(address) {
+    let add1 = address[1];
     let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${add1}&returnGeom=Y&getAddrDetails=N`
     let response = await axios.get(mapUrl)
-    console.log("From OneMap's: ", response.data)
+    console.log("response data: " , response.data)
+    // let lat = response.data[0]['latitude']
+    // let lng = response.data[0]['longitude']
+    // return {
+    //     'latitude': lat,
+    //     'longitude': lng
+    // }
 }
+
+// create a list of objects that stores name, clean address and its lat-lng
+let addLatLngObj = [
+    {
+        'name': "",
+        'address': "",
+        'latitude': "",
+        'longitude': "",
+    }
+]
+
+// get lat-lng function from clean addresses
+async function newLatLngObj(shops, address) {
+    let index = 0;
+    for (let i of shops) {
+        let latlng = await getLatLng(address[index]);
+        let lat = latlng.latitude;
+        let lng = latlng.longitude;
+        addLatLngObj.push({
+            'name': i.name, 'address': address[index],
+            'latitude': lat, 
+            'longitude':lng})
+        index++
+    }
+    return newLatLngObj;
+}
+
+
+
+
 
 // get individial lat-lng 
 // let mapBaseUrl = "https://developers.onemap.sg/commonapi/search"

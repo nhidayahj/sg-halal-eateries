@@ -6,8 +6,9 @@ searchBtn.addEventListener('click', async () => {
 })
 
 window.addEventListener('DOMContentLoaded', async () => {
-    let listOfPlaces = await loadData();
-    console.log("All the list: ", listOfPlaces.moreBusinesses);
+    let allData = await loadData()
+    let listOfPlaces = allData.moreBusinesses;
+    console.log("All the list: ", listOfPlaces);
     loadMap();
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
@@ -34,7 +35,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         'expensive':[]
     }
 
-    for (let i of listOfPlaces.moreBusinesses) {
+    for (let i of listOfPlaces) {
         if (i.priceRange) {
             if (i.priceRange == 1) {
                 priceList['affordable'].push(i.name);
@@ -52,14 +53,18 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
     //all restaurant's list
-    let add = getDataAddress(listOfPlaces)
-    console.log("original add:" ,add)
+    //let add = getDataAddress(listOfPlaces)
+    //console.log("original add:" ,add)
     let add2 = getDataAddress2(listOfPlaces)
     console.log("clean add:" , add2)
 
-    //find the lat-lng of each restaurant from data.json
-    //test map API
-    //getLatLng(add);
+
+
+    //find the lat-lng 
+    // newObj = await newLatLngObj(listOfPlaces.moreBusinesses, add2);
+    //console.log(newObj)
+    getLatLng(add2)
+    
 
 })
     
