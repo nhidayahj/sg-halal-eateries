@@ -44,6 +44,13 @@ function getDataAddress2(data) {
             })
         }
     }
+    for (let i = 0; i < clean_add.length; i++) {
+        if (clean_add[i].full_address == "2") {
+            clean_add.splice(i, 1)
+        }
+    }
+    //console.log("clean add 2:", clean_add)
+
     return clean_add;
 }
 
@@ -51,23 +58,27 @@ function getDataAddress2(data) {
 
 // getting the lat-lng for all the clean addresses 
 let newLatLngObj = []
+//update the clean add list 
 
 async function getLatLng(address) {
-    for (let i of address) {
-        let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.full_address}&returnGeom=Y&getAddrDetails=N`
+    let cleanAdd = getDataAddress2(address)
+    for (let i of cleanAdd) {
+        let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.full_address}&returnGeom=Y&getAddrDetails=Y`
         let response = await axios.get(mapUrl)
         let result = response.data
-
+        //console.log("result: ", result)
         // if there is a 'found' address, get the lat-lng
         if (result.found) {
             newLatLngObj.push({
-                'full_address': result.results[0]['SEARCHVAL'],
+                'name': i.name,
+                'full_address': result.results[0]['ADDRESS'],
                 'latitude': result.results[0]['LATITUDE'],
                 'longitude': result.results[0]['LONGITUDE']
             })
         }
     }
-    return newLatLngObj
+    //console.log("full data: ", newLatLngObj)
+    return newLatLngObj;
 }
 
 

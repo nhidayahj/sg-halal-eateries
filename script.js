@@ -51,20 +51,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     //get the user's price selection from the 'Price Range' dropdown
 
-
-    //all restaurant's list
-    let allAddresses = getDataAddress2(listOfPlaces)
-    for (let i = 0; i < allAddresses.length; i++) {
-        if (allAddresses[i].full_address == "2") {
-            allAddresses.splice(i, 1)
-        } 
-    }
-    console.log("clean add:", allAddresses)
-
-
-    //find the lat-lng 
-    let latLng = await getLatLng(allAddresses)
-    console.log("found list: " ,latLng)
+    //find the lat-lng of available restaurants
+    let fullData = await getLatLng(listOfPlaces)
+    console.log("found list: " ,fullData)
 
     //loadMap(latLng);
 
