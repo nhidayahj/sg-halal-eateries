@@ -125,8 +125,8 @@ async function loadMap(data) {
 
     // create markers from all the available lat-lng restaurants
     let mapPoints = await getLatLng(data);
-    let lat = parseInt("");
-    let lng = parseInt("");
+    let lat = parseFloat("");
+    let lng = parseFloat("");
     for (let i of mapPoints) {
         lat = i.latitude;
         lng = i.longitude;
