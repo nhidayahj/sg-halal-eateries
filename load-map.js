@@ -50,7 +50,6 @@ function getDataAddress2(data) {
         }
     }
     //console.log("clean add 2:", clean_add)
-
     return clean_add;
 }
 
@@ -72,6 +71,7 @@ async function getLatLng(address) {
             newLatLngObj.push({
                 'name': i.name,
                 'full_address': result.results[0]['ADDRESS'],
+                'postal':result.results[0]['POSTAL'],
                 'latitude': result.results[0]['LATITUDE'],
                 'longitude': result.results[0]['LONGITUDE']
             })
@@ -106,3 +106,32 @@ async function getLatLng(address) {
 //         restMarker.addTo(map);
 //     }
 // }
+
+// loads initial map 
+async function loadMap(data) {
+    let singapore = [1.3521, 103.8198]; // #1 Singapore latlng
+        let map = L.map('map').setView(singapore, 13); // #2 Set the center point
+
+        // setup the tile layers
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
+        }).addTo(map);
+
+
+    // create markers from all the available lat-lng restaurants
+    let mapPoints = await getLatLng(data);
+    let lat = parseInt("");
+    let lng = parseInt("");
+    for (let i of mapPoints) {
+        lat = i.latitude;
+        lng = i.longitude;
+        let markers = L.marker([lat,lng])
+        markers.addTo(map);
+    }
+
+}
