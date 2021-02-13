@@ -28,8 +28,7 @@ function getDataAddress(data) {
 // to only get the clean address for map API
 
 let clean_add = []
-
-function getDataAddress2(data) {
+function getCleanAdd(data) {
     for (let i = 0; i < data.length; i++) {
         let indexComma = data[i].addressLine1.indexOf(",")
         if (indexComma == -1) {
@@ -63,8 +62,8 @@ function getDataAddress2(data) {
 let newLatLngObj = []
 //update the clean add list 
 
-async function getLatLng(address) {
-    let cleanAdd = getDataAddress2(address)
+async function getUpdatedList(address) {
+    let cleanAdd = getCleanAdd(address)
     for (let i of cleanAdd) {
         let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.full_address}&returnGeom=Y&getAddrDetails=Y`
         let response = await axios.get(mapUrl)
@@ -118,6 +117,7 @@ async function loadMap(data) {
     // setup the tile layers
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+        minZoom:10,
         maxZoom: 18,
         id: 'mapbox/streets-v11',
         tileSize: 512,
@@ -126,29 +126,39 @@ async function loadMap(data) {
     }).addTo(map);
 
     // call markers & tooltip func
-    showInfo(map,data);
+    showMarkerTooltip(map, data);
 
+    //map.on('click', onClick(data))
 
 }
 
 // function to create the markers & display its info in a tooltip 
-function showInfo(map,data) {
-    //let allInfo = await getLatLng(data)
+function showMarkerTooltip(map, data) {
     let lat = parseFloat("");
     let lng = parseFloat("");
+    let markers = null;
     for (let i of data) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
         ratings = i.ratings
         //create markers for each
-        let markers = L.marker([lat, lng])
+        markers = L.marker([lat, lng])
         //create a tooltip for each
         markers.bindTooltip(`
-        <p>${name}</p>
+        <p><b>${name}</b></p>
         <p>Ratings: ${ratings}⭐</p>
+        <p>Click for more info</p>
         `).openTooltip();
+        
         markers.addTo(map);
+        //console.log(markers)
+        markers.on('click', onClick)
     }
 
 }
+
+function onClick() {
+    console.log("hello")
+}
+

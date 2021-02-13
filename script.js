@@ -8,7 +8,11 @@ searchBtn.addEventListener('click', async () => {
 window.addEventListener('DOMContentLoaded', async () => {
     let allData = await loadData()
     let listOfPlaces = allData.moreBusinesses;
+    //raw data info:
     console.log("All the list: ", listOfPlaces);
+    //filtered data:
+    let cleanFullData = await getUpdatedList(listOfPlaces)
+    console.log("clean list: " ,cleanFullData)
     
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
@@ -53,12 +57,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
 
-    //find the lat-lng of available restaurants
-    let fullData = await getLatLng(listOfPlaces)
-    console.log("found list: " ,fullData)
-
-    // to display maps with markers when page is loaded 
-    await loadMap(fullData);
+    // display maps with markers when page is loaded 
+    await loadMap(cleanFullData);
 
 })
 
