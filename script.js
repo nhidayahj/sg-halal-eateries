@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.log("found list: " ,fullData)
 
     // to display maps with markers when page is loaded 
-    await loadMap(listOfPlaces);
+    await loadMap(fullData);
 
 })
 

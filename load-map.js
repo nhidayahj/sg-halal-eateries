@@ -36,15 +36,15 @@ function getDataAddress2(data) {
             clean_add.push({
                 'name': data[i].name,
                 'full_address': data[i].addressLine1,
-                'ratings':data[i].rating, 
-                'priceRange':data[i].priceRange
+                'ratings': data[i].rating,
+                'priceRange': data[i].priceRange
             })
         } else if (indexComma) {
             clean_add.push({
                 'name': data[i].name,
                 'full_address': data[i].addressLine1.slice(0, indexComma),
-                'ratings':data[i].rating, 
-                'priceRange':data[i].priceRange
+                'ratings': data[i].rating,
+                'priceRange': data[i].priceRange
             })
         }
     }
@@ -77,7 +77,7 @@ async function getLatLng(address) {
                 'full_address': result.results[0]['ADDRESS'],
                 'ratings': i.ratings,
                 'priceRange': i.priceRange,
-                'postal':result.results[0]['POSTAL'],
+                'postal': result.results[0]['POSTAL'],
                 'latitude': result.results[0]['LATITUDE'],
                 'longitude': result.results[0]['LONGITUDE']
             })
@@ -86,9 +86,6 @@ async function getLatLng(address) {
     //console.log("full data: ", newLatLngObj)
     return newLatLngObj;
 }
-
-
-
 
 // function loadMap(address) {
 //     for (let i of address) {
@@ -116,48 +113,42 @@ async function getLatLng(address) {
 // loads initial map 
 async function loadMap(data) {
     let singapore = [1.3521, 103.8198]; // #1 Singapore latlng
-        let map = L.map('map').setView(singapore, 13); // #2 Set the center point
+    let map = L.map('map').setView(singapore, 13); // #2 Set the center point
 
-        // setup the tile layers
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
-        }).addTo(map);
+    // setup the tile layers
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
+    }).addTo(map);
+
+    // call markers & tooltip func
+    showInfo(map,data);
 
 
-    // create markers from all the available lat-lng restaurants
-    let mapPoints = await getLatLng(data);
+}
+
+// function to create the markers & display its info in a tooltip 
+function showInfo(map,data) {
+    //let allInfo = await getLatLng(data)
     let lat = parseFloat("");
     let lng = parseFloat("");
-    for (let i of mapPoints) {
+    for (let i of data) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
         ratings = i.ratings
-        let markers = L.marker([lat,lng])
+        //create markers for each
+        let markers = L.marker([lat, lng])
+        //create a tooltip for each
         markers.bindTooltip(`
         <p>${name}</p>
         <p>Ratings: ${ratings}⭐</p>
         `).openTooltip();
         markers.addTo(map);
-    }   
+    }
 
 }
-
-// function to create the markers
-
-
-
-// function to display info (name + ratings) to each marker
-// function showInfo(marker) {
-//         let name=marker.name;
-//         let ratings = marker.ratings
-//         marker.bindTooltip(`
-//         ${name} 
-//         ${ratings}:⭐`).openTooltip();
-    
-// }
