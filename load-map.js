@@ -35,12 +35,16 @@ function getDataAddress2(data) {
         if (indexComma == -1) {
             clean_add.push({
                 'name': data[i].name,
-                'full_address': data[i].addressLine1
+                'full_address': data[i].addressLine1,
+                'ratings':data[i].rating, 
+                'priceRange':data[i].priceRange
             })
         } else if (indexComma) {
             clean_add.push({
                 'name': data[i].name,
-                'full_address': data[i].addressLine1.slice(0, indexComma)
+                'full_address': data[i].addressLine1.slice(0, indexComma),
+                'ratings':data[i].rating, 
+                'priceRange':data[i].priceRange
             })
         }
     }
@@ -71,6 +75,8 @@ async function getLatLng(address) {
             newLatLngObj.push({
                 'name': i.name,
                 'full_address': result.results[0]['ADDRESS'],
+                'ratings': i.ratings,
+                'priceRange': i.priceRange,
                 'postal':result.results[0]['POSTAL'],
                 'latitude': result.results[0]['LATITUDE'],
                 'longitude': result.results[0]['LONGITUDE']
@@ -130,8 +136,28 @@ async function loadMap(data) {
     for (let i of mapPoints) {
         lat = i.latitude;
         lng = i.longitude;
+        name = i.name,
+        ratings = i.ratings
         let markers = L.marker([lat,lng])
+        markers.bindTooltip(`
+        <p>${name}</p>
+        <p>Ratings: ${ratings}⭐</p>
+        `).openTooltip();
         markers.addTo(map);
-    }
+    }   
 
 }
+
+// function to create the markers
+
+
+
+// function to display info (name + ratings) to each marker
+// function showInfo(marker) {
+//         let name=marker.name;
+//         let ratings = marker.ratings
+//         marker.bindTooltip(`
+//         ${name} 
+//         ${ratings}:⭐`).openTooltip();
+    
+// }

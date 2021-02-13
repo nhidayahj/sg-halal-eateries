@@ -51,9 +51,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     //get the user's price selection from the 'Price Range' dropdown
 
+
+
     //find the lat-lng of available restaurants
-    //let fullData = await getLatLng(listOfPlaces)
-    //console.log("found list: " ,fullData)
+    let fullData = await getLatLng(listOfPlaces)
+    console.log("found list: " ,fullData)
 
     // to display maps with markers when page is loaded 
     await loadMap(listOfPlaces);

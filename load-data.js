@@ -35,10 +35,3 @@ async function createCuisineCheckBox() {
         dropdownOption.innerHTML += newCheckBox;
     }
 }
-
-
-// for map usage
-// let mapBaseUrl = "https://developers.onemap.sg/commonapi/"
-// async function mapLatLng() {
-//     let response = await axios.get(mapBaseUrl + 'search?')
-// }
