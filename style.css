@@ -4,7 +4,7 @@
 .page-header {
   padding: 0%;
   background-color: goldenrod;
-  height: 25vh;
+  height: 22vh;
 }
 
 
@@ -35,26 +35,17 @@
     
 }
 
-#filterOptions{
-    
-    background-color: rgb(253, 253, 253);
+
+.filterOptions {
+    font-family: "Rubik", sans-serif;
+    padding: 0;
+    font-size: 42px;
 }
 
-.cuisineOptions {
-    /* margin-bottom: 10px; */
-    padding: 10px;
-    font-size: 20px;
+#cuisineBtn:hover {
+    color:blue;
 }
 
-
-a#cuisineBtn {
-    text-decoration: none;
-    color:green;
-}
-
-.map-area {
-    background-color: white;
-}
 
 #map {
     height:80vh;

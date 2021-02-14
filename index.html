@@ -31,16 +31,43 @@
             </div>
 
             <!-- Collapsable options when filter btn is clicked -->
-            <div class="collapse" id="filterOptions">
+            <div class="collapse mt-3" id="filterOptions">
                 <div class="row justify-content-center">
-                    <a class="col-2 cuisineOptions" id="cuisineBtn" href="#" role="button" data-toggle="modal"
-                        data-target="#cuisineList">Cuisine Type</a>
-                    <p class="col-2 cuisineOptions">Price Range</p>
-                    <p class="col-2 cuisineOptions">Ratings</p>
+                    <a class="col-2 dropdown-toggle cuisineOptions" id="cuisineBtn" href="#" role="button"
+                        data-toggle="modal" data-target="#cuisineList">cuisines</a>
+
+                    <div class=" col-2 dropdown">
+                        <a class="dropdown-toggle" id="priceBtn" href="#" role="button"
+                            data-toggle="dropdown">prices</a>
+
+                        <!-- Dropdown for prices -->
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="afford">$</a></li>
+                            <li><a class="dropdown-item" href="#" id="midRange">$$</a></li>
+                            <li><a class="dropdown-item" href="#" id="exp">$$$</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-2 dropdown">
+                        <a class="dropdown-toggle" id="ratingsBtn" href="#" role="button"
+                            data-toggle="dropdown">ratings</a>
+
+                        <!-- Dropdown for ratings -->
+                        <ul class="dropdown-menu" id="ratingsDropdown">
+                            <li><a class="dropdown-item" href="#" id="accept">Acceptable</a></li>
+                            <li><a class="dropdown-item" href="#" id="good">Good</a></li>
+                            <li><a class="dropdown-item" href="#" id="recommend">Recommended</a></li>
+                        </ul>
+
+                    </div>
+
+
+
+
                 </div>
             </div>
 
-            <!-- Modal View -->
+            <!-- Modal View for Cuisine List-->
             <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -69,7 +96,13 @@
                 </div>
             </div>
 
-            <div class="map-area">
+
+
+
+
+
+
+            <div class="map-area mt-3">
                 <div id="map">
 
                 </div>
