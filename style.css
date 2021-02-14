@@ -1,45 +1,47 @@
-.search-area {
-    background-color: rgba(115, 199, 6, 0.3);
-    height:20vh;
+.container-fluid {
+  padding: 0%;
+}
+.page-header {
+  padding: 0%;
+  background-color: goldenrod;
+  height: 25vh;
 }
 
-.title {
-    font-size: 30px;
+
+
+#header-title {
+    font-family: "Rubik", sans-serif;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 5vh;
 }
 
-.search-bar {
-    margin-top: 30px;
+.search-header {
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 85vw;
 }
 
 #search-bar {
-    align-items: center;
-    width: 70vh;
-    height: 50px;
-    border: 2px solid black;
-    border-radius: 20px;
+    width: 45vw;
 }
 
-#search-btn {
-    margin-left: 20px;
-    padding: 5px 20px;
-    font-weight: bold;
-    border: 2px solid gray;
-    border-radius: 10px;
+#find-btn {
+  margin-left: 10px;
 }
 
 #filter-btn {
-    margin-left: 20px;
-    font-weight: bold;
-    border: 2px solid rgb(24, 175, 180);
-    border-radius: 10px;
+    margin-left: 10px;
+    
 }
 
 #filterOptions{
-    background-color: rgba(115, 199, 6, 0.3);
+    
+    background-color: rgb(253, 253, 253);
 }
 
 .cuisineOptions {
-    margin-bottom: 0%;
+    /* margin-bottom: 10px; */
     padding: 10px;
     font-size: 20px;
 }
@@ -48,6 +50,10 @@
 a#cuisineBtn {
     text-decoration: none;
     color:green;
+}
+
+.map-area {
+    background-color: white;
 }
 
 #map {

@@ -1,5 +1,5 @@
-let searchBtn = document.querySelector("#search-btn")
-searchBtn.addEventListener('click', async () => {
+let findBtn = document.querySelector("#find-btn")
+findBtn.addEventListener('click', async () => {
     let searchValue = document.querySelector("#search-bar").value;
     console.log(searchValue)
 

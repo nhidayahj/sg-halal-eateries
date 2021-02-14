@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="style.css">
 
@@ -17,64 +19,66 @@
 
 <body>
     <div class="container-fluid">
-        <div class="search-area">
-            <h1 class="title display-3 d-flex justify-content-center">search halal places</h1>
-            <div class="search-bar d-flex flex-sm-wrap justify-content-center">
-                <input type="text" name="search-bar" id="search-bar"
-                    placeholder="       enter location or type restaurant's name ">
-                <button type="button" class="btn btn-secondary" id="search-btn">Find</button>
-                <button type="button" class="btn btn-info" id="filter-btn" data-toggle="collapse"
-                    data-target="#filterOptions">Filter By</button>
+        <div class="container-fluid page-header">
+            <div id="top-header-section">
+                <h1 id="header-title"> search halal places</h1>
+                <div class="row search-header">
+                    <input type="text" class="form-control" placeholder="search restaurant name" id="search-bar">
+                    <button type="button" class="btn btn-success" id="find-btn">Find</button>
+                    <button type="button" class="btn btn-info" id="filter-btn" data-toggle="collapse"
+                        data-target="#filterOptions">Filter By</button>
+                </div>
             </div>
-        </div>
-        <!-- Collapsable Filter menu list -->
-        <div class="collapse" id="filterOptions">
-            <div class="row justify-content-center filter-section ">
-                <!-- <a class="col-2 cuisineOptions" href="#" role="button" id="cuisineType" data-toggle="modal"
-                    data-target="#cuisineList">Cuisine Type</a> -->
-                <a class="col-2 cuisineOptions" id= "cuisineBtn" href="#" role="button" id="cuisineType" data-toggle="modal"
-                    data-target="#cuisineList">Cuisine Type</a>
-                <p class="col-2 cuisineOptions">Price Range</p>
-                <p class="col-2 cuisineOptions">Ratings</p>
-            </div>
-        </div>
-        <!-- Modal Pop-up for Cuisine List -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Cuisine</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="displayCuisine col-6">
-                                    <!-- display checkbox of cuisine types -->
+            <!-- Collapsable options when filter btn is clicked -->
+            <div class="collapse" id="filterOptions">
+                <div class="row justify-content-center">
+                    <a class="col-2 cuisineOptions" id="cuisineBtn" href="#" role="button" data-toggle="modal"
+                        data-target="#cuisineList">Cuisine Type</a>
+                    <p class="col-2 cuisineOptions">Price Range</p>
+                    <p class="col-2 cuisineOptions">Ratings</p>
+                </div>
+            </div>
+
+            <!-- Modal View -->
+            <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Cuisine</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="displayCuisine col-6">
+                                        <!-- display checkbox of cuisine types -->
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <button type="button" id="cuisineFilterSuccessBtn" class="btn btn-success">Apply</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="button" id="cuisineFilterSuccessBtn" class="btn btn-success">Apply</button>
-                    </div>
+                </div>
+            </div>
+
+            <div class="map-area">
+                <div id="map">
+
                 </div>
             </div>
         </div>
 
-        <div class="map-area mt-3">
-            <div id="map">
 
-            </div>
-        </div>
     </div>
+
 
 
 
