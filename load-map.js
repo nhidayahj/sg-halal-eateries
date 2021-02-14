@@ -148,7 +148,7 @@ function onClick() {
     console.log("hello")
 }
 
-// display markers based on user selections 
-function displayUserMapCheap() {
-    console.log("hello")
-}
+//display markers based on user selections 
+// function displayUserMapCheap() {
+//     console.log("cheap eats")
+// }

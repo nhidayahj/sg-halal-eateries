@@ -25,7 +25,7 @@ async function getCuisineType() {
 //create the list of checkboxes in Cuisine filter 
 async function createCuisineCheckBox() {
     let cuisineArr = await getCuisineType();
-    let dropdownOption = document.querySelectorAll(".displayCuisine")
+    let dropdownOption = document.querySelector(".displayCuisine")
     for(let i of cuisineArr) {
         let newCheckBox = `
         <input type="checkbox" class="cuisine" name="${i}" value="${i.toLowerCase().replace(" ","-")}"/>

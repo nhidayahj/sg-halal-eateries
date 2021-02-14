@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     //console.log("all cuisine:" ,cuisineArr)
 
     // display cuisine checkbox in Cuisine filter 
-    let displayCuisineFilters = await createCuisineCheckBox();
+    await createCuisineCheckBox();
     //store user's cuisine selection
     let userCuisineSelection = [];
     let cuisineFilterSelectBtn = document.querySelector("#cuisineFilterSuccessBtn")
@@ -71,9 +71,9 @@ window.addEventListener('DOMContentLoaded', async () => {
                     'lng':i.longitude
                 })
             }
-        } 
-        console.log(userAffordList)
-        displayUserMapCheap();
+        }
+        console.log("Affordable List: ", userAffordList) 
+        
     })
 
     
