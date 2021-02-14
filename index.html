@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="container-fluid page-header">
             <div id="top-header-section">
-                <h1 id="header-title"> search halal places</h1>
+                <h1 id="header-title"> search halal eateries</h1>
                 <div class="row search-header">
                     <input type="text" class="form-control" placeholder="search restaurant name" id="search-bar">
                     <button type="button" class="btn btn-success" id="find-btn">Find</button>
@@ -41,11 +41,11 @@
                             data-toggle="dropdown">prices</a>
 
                         <!-- Dropdown for prices -->
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" id="afford">$</a></li>
-                            <li><a class="dropdown-item" href="#" id="midRange">$$</a></li>
-                            <li><a class="dropdown-item" href="#" id="exp">$$$</a></li>
-                        </ul>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item  price-item" href="#" id="afford">$</a>
+                            <a class="dropdown-item  price-item" href="#" id="mid_range">$$</a>
+                            <a class="dropdown-item  price-item" href="#" id="exp">$$$</a>
+                        </div>
                     </div>
 
                     <div class="col-2 dropdown">
@@ -53,17 +53,12 @@
                             data-toggle="dropdown">ratings</a>
 
                         <!-- Dropdown for ratings -->
-                        <ul class="dropdown-menu" id="ratingsDropdown">
-                            <li><a class="dropdown-item" href="#" id="accept">Acceptable</a></li>
-                            <li><a class="dropdown-item" href="#" id="good">Good</a></li>
-                            <li><a class="dropdown-item" href="#" id="recommend">Recommended</a></li>
-                        </ul>
-
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" id="accept">Acceptable</a>
+                            <a class="dropdown-item" href="#" id="good">Good</a>
+                            <a class="dropdown-item" href="#" id="recommend">Recommended</a>
+                        </div>
                     </div>
-
-
-
-
                 </div>
             </div>
 

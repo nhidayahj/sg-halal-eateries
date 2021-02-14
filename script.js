@@ -12,8 +12,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.log("All the list: ", listOfPlaces);
     //filtered data:
     let cleanFullData = await getUpdatedList(listOfPlaces)
-    console.log("clean list: " ,cleanFullData)
-    
+    console.log("clean list: ", cleanFullData)
+
+    //load map with ALL the markers
+    await loadMap(cleanFullData);
+
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
 
@@ -39,7 +42,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         'expensive': []
     }
 
-    for (let i of listOfPlaces) {
+    for (let i of cleanFullData) {
         if (i.priceRange) {
             if (i.priceRange == 1) {
                 priceList['affordable'].push(i.name);
@@ -50,15 +53,30 @@ window.addEventListener('DOMContentLoaded', async () => {
             }
         }
     }
-    // console.log(priceList)
+    // 13-affordable, 11-mid_range, 0-exp
+    console.log(priceList)
 
 
+    // using jQuery
     //get the user's price selection from the 'Price Range' dropdown
+    $("#afford").click(function() {
+        //call the map function
+        let userAffordList = [];
+        for (let i of cleanFullData){
+            if (priceList['affordable'].includes(i.name)) {
+                userAffordList.push({
+                    'name':i.name,
+                    'ratings':i.ratings,
+                    'lat':i.latitude,
+                    'lng':i.longitude
+                })
+            }
+        } 
+        console.log(userAffordList)
+        displayUserMapCheap();
+    })
 
-
-
-    // display maps with markers when page is loaded 
-    await loadMap(cleanFullData);
+    
 
 })
 
