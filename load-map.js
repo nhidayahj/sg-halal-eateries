@@ -19,8 +19,14 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // call markers & tooltip func
 //showMarkerTooltip(map, data);
 
+
+let showAllLayer = L.markerClusterGroup();
+let affordLayer = L.markerClusterGroup();
+let midLayer = L.markerClusterGroup();
+
+
 // function to create the markers & display its info in a tooltip 
-function showMarkerTooltip(map, data) {
+function showMarkerTooltip(map, data, layer) {
     let lat = parseFloat("");
     let lng = parseFloat("");
     let markers = null;
@@ -28,7 +34,8 @@ function showMarkerTooltip(map, data) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
-            ratings = i.ratings
+        ratings = i.ratings
+
         //create markers for each
         markers = L.marker([lat, lng])
         //create a tooltip for each
@@ -37,31 +44,30 @@ function showMarkerTooltip(map, data) {
         <p>Ratings: ${ratings}⭐</p>
         <p>Click for more info</p>
         `).openTooltip();
-
-        markers.addTo(map);
+        markers.addTo(layer);
     }
-
+    layer.addTo(map)
 }
 
-
-
-
-
-
+// function userSelectionOptions(layer) {
+//     if (!map.hasLayer(layer)) {
+//         map.addLayer(layer)
+//     } else {
+//         map.remove(layer)
+//     }
+// }
 
 // create user dropdown selections
-document.querySelector("#afford").addEventListener('click', function () {
-    userSelectionOptions(affordLayer)
-})
+// document.querySelector("#afford").addEventListener('click', function () {
+//     let data = getPriceRangeLatLng()
+//     userSelectionOptions(affordLayer)
+// })
 
-document.querySelector("#mid_range").addEventListener('click', function () {
+// document.querySelector("#mid_range").addEventListener('click', function () {
 
-    userSelectionOptions(midRangeLayer)
-})
+//     userSelectionOptions(midRangeLayer)
+// })
 
-document.querySelector("#exp").addEventListener('click', function () {
-    userSelectionOptions(expLayer)
-})
 
 
 

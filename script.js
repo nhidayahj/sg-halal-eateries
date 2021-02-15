@@ -15,9 +15,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.log("clean list: ", cleanFullData)
 
     //load map with ALL the markers at initial load page
-    showMarkerTooltip(map, cleanFullData);
+    showMarkerTooltip(map,cleanFullData,showAllLayer)
 
-    //getAffordLatLng(cleanFullData)
 
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
@@ -56,17 +55,28 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
     }
     // 13-affordable, 11-mid_range, 0-exp
-    console.log("List of price Range: " ,priceList)
+    //console.log("List of price Range: ", priceList)
 
 
-   let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
-   let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
+    //let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
+    //let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
     // no expensive list 
+    //console.log("Affordable list: ", affordPriceList)
+    // console.log("Mid list:" , midPriceList)
 
 
 
+    document.querySelector("#afford").addEventListener('click', function () {
+        let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
+        showMarkerTooltip(map, affordPriceList, affordLayer);
+        //userSelectionOptions(affordLayer)
+    })
 
-    
+    document.querySelector("#mid_range").addEventListener('click', function () {
+        let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
+        showMarkerTooltip(map, midPriceList, midLayer);
+        //userSelectionOptions(midRangeLayer)
+    })
 
 })
 

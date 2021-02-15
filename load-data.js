@@ -121,11 +121,13 @@ function getPriceRangeLatLng(cleanData, pricelist) {
             if (j.name == i) {
                 priceRangeLatLng.push({
                     'name':j.name,
-                    'lat':j.latitude,
-                    'lng':j.longitude
+                    'latitude':j.latitude,
+                    'longitude':j.longitude,
+                    'ratings':j.ratings
                 })
             }
         }
     }
+    //console.log(priceRangeLatLng)
     return priceRangeLatLng;
 }
