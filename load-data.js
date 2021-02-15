@@ -113,7 +113,7 @@ async function getUpdatedList(address) {
 
 
 
-// compare Afford list with cleanData
+// compare different price range list with cleanData
 function getPriceRangeLatLng(cleanData, pricelist) {
     let priceRangeLatLng = []
     for (let i of pricelist) {
@@ -131,3 +131,9 @@ function getPriceRangeLatLng(cleanData, pricelist) {
     //console.log(priceRangeLatLng)
     return priceRangeLatLng;
 }
+
+
+// group the ratings 
+// function getRatings() {
+
+// }

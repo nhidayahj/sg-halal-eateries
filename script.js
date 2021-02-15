@@ -58,14 +58,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     //console.log("List of price Range: ", priceList)
 
 
-    //let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
-    //let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
-    // no expensive list 
-    //console.log("Affordable list: ", affordPriceList)
-    // console.log("Mid list:" , midPriceList)
-
-
-
     document.querySelector("#afford").addEventListener('click', function () {
         let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
         showMarkerTooltip(map, affordPriceList, affordLayer);

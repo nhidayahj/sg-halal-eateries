@@ -36,13 +36,47 @@
             </div>
 
             <!-- Collapsable options when filter btn is clicked -->
-            <div class="collapse mt-3" id="filterOptions">
-                <div class="row justify-content-center">
-                    <a class="col-2 dropdown-toggle cuisineOptions" id="cuisineBtn" href="#" role="button"
-                        data-toggle="modal" data-target="#cuisineList">cuisines</a>
-
+            <div class="container collapse mt-3" id="filterOptions">
+                <div class="row nav-collapse">
                     <div class="col-2 dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" id="priceBtn"
+                        <button type="button" class="cuisineOptions btn btn-info dropdown-toggle" id="cuisineBtn"
+                            data-toggle="modal" data-target="#cuisineList">cuisines</button>
+
+                        <!-- Modal View for Cuisine List-->
+                        <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Cuisine</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="displayCuisine col-6">
+                                                    <!-- display checkbox of cuisine types -->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                            data-dismiss="modal">Cancel</button>
+                                        <button type="button" id="cuisineFilterSuccessBtn"
+                                            class="btn btn-success">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- dropdown for price range -->
+                    <div class="col-2 dropdown">
+                        <button type="button" class="btn btn-info dropdown-toggle" id="priceBtn"
                             data-toggle="dropdown">prices</button>
 
                         <!-- Dropdown for prices -->
@@ -54,8 +88,9 @@
                         </div>
                     </div>
 
+                    <!-- dropdown for ratings -->
                     <div class="col-2 dropdown">
-                        <button class="btn btn-primary dropdown-toggle" id="ratingsBtn"
+                        <button class="btn btn-info dropdown-toggle" id="ratingsBtn"
                             data-toggle="dropdown">ratings</button>
 
                         <!-- Dropdown for ratings -->
@@ -72,7 +107,7 @@
             </div>
 
             <!-- Modal View for Cuisine List-->
-            <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+            <!-- <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -86,7 +121,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="displayCuisine col-6">
-                                        <!-- display checkbox of cuisine types -->
+                                         display checkbox of cuisine types
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- Map Div  -->
