@@ -1,122 +1,23 @@
 
-// get all the addresses from data.json 
-// may be redundant 
-let all_addresses = []
-function getDataAddress(data) {
-    let addressCollection = data.moreBusinesses
-    for (let i of addressCollection) {
-        all_addresses.push(i.addressLine1)
-    }
-    return all_addresses;
-}
-
-// to only get the clean address for map API
-
-let clean_add = []
-function getCleanAdd(data) {
-    for (let i = 0; i < data.length; i++) {
-        let indexComma = data[i].addressLine1.indexOf(",")
-        if (indexComma == -1) {
-            clean_add.push({
-                'name': data[i].name,
-                'full_address': data[i].addressLine1,
-                'ratings': data[i].rating,
-                'priceRange': data[i].priceRange
-            })
-        } else if (indexComma) {
-            clean_add.push({
-                'name': data[i].name,
-                'full_address': data[i].addressLine1.slice(0, indexComma),
-                'ratings': data[i].rating,
-                'priceRange': data[i].priceRange
-            })
-        }
-    }
-    for (let i = 0; i < clean_add.length; i++) {
-        if (clean_add[i].full_address == "2") {
-            clean_add.splice(i, 1)
-        }
-    }
-    //console.log("clean add 2:", clean_add)
-    return clean_add;
-}
-
-
-
-// getting the lat-lng for all the clean addresses 
-let newLatLngObj = []
-//update the clean add list 
-
-async function getUpdatedList(address) {
-    let cleanAdd = getCleanAdd(address)
-    for (let i of cleanAdd) {
-        let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.full_address}&returnGeom=Y&getAddrDetails=Y`
-        let response = await axios.get(mapUrl)
-        let result = response.data
-        //console.log("result: ", result)
-        // if there is a 'found' address, get the lat-lng
-        if (result.found) {
-            newLatLngObj.push({
-                'name': i.name,
-                'full_address': result.results[0]['ADDRESS'],
-                'ratings': i.ratings,
-                'priceRange': i.priceRange,
-                'postal': result.results[0]['POSTAL'],
-                'latitude': result.results[0]['LATITUDE'],
-                'longitude': result.results[0]['LONGITUDE']
-            })
-        }
-    }
-    //console.log("full data: ", newLatLngObj)
-    return newLatLngObj;
-}
-
-// function loadMap(address) {
-//     for (let i of address) {
-//         let lat = parseFloat(i.latitude)
-//         let lng = parseFloat(i.longitude)
-//         let eachShop = [lat,lng]
-
-//         let map = L.map('map').setView(eachShop, 13); // #2 Set the center point
-
-//         // setup the tile layers
-//         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-//             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-//             maxZoom: 18,
-//             id: 'mapbox/streets-v11',
-//             tileSize: 512,
-//             zoomOffset: -1,
-//             accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
-//         }).addTo(map);
-
-//         let restMarker = L.marker([lat, lng])
-//         restMarker.addTo(map);
-//     }
-// }
-
 // loads initial map 
-async function loadMap(data) {
-    let singapore = [1.3521, 103.8198]; // #1 Singapore latlng
-    let map = L.map('map').setView(singapore, 13); // #2 Set the center point
+// base map 
 
-    // setup the tile layers
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-        minZoom: 10,
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
-    }).addTo(map);
+let singapore = [1.3521, 103.8198]; // #1 Singapore latlng
+let map = L.map('map').setView(singapore, 13); // #2 Set the center point
 
-    // call markers & tooltip func
-    showMarkerTooltip(map, data);
+// setup the tile layers
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+    minZoom: 10,
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
+}).addTo(map);
 
-    //map.on('click', onClick(data))
-
-
-}
+// call markers & tooltip func
+//showMarkerTooltip(map, data);
 
 // function to create the markers & display its info in a tooltip 
 function showMarkerTooltip(map, data) {
@@ -138,17 +39,65 @@ function showMarkerTooltip(map, data) {
         `).openTooltip();
 
         markers.addTo(map);
-        //console.log(markers)
-        markers.on('click', onClick)
     }
 
 }
 
-function onClick() {
-    console.log("hello")
-}
 
-//display markers based on user selections 
-// function displayUserMapCheap() {
-//     console.log("cheap eats")
+
+
+
+
+
+// create user dropdown selections
+document.querySelector("#afford").addEventListener('click', function () {
+    userSelectionOptions(affordLayer)
+})
+
+document.querySelector("#mid_range").addEventListener('click', function () {
+
+    userSelectionOptions(midRangeLayer)
+})
+
+document.querySelector("#exp").addEventListener('click', function () {
+    userSelectionOptions(expLayer)
+})
+
+
+
+
+
+
+// create the price layers
+// layer list to contain all the dropdown menus 
+
+// function forEachFeature(layer) {
+//     for (let i of layer) {
+//         let lat = i.latitude;
+//         let lng = i.longitude;
+//         new L.marker([lat, lng]).bindTooltip(`
+//             <p>${feature.name}</p>
+//             <p>${feature.ratings}⭐</p>
+//         `).addTo(affordLayer)
+//     }
+// }
+
+// let affordLayer = L.markerClusterGroup();
+// function getAffordLayer(address) {
+//     let affordResult = getUpdatedList(address)
+//     console.log(affordResult)
+//     layer = L.geoJson(affordResult, {
+//         onEachFeature: forEachFeature
+//     }).addTo(map)
+// }
+
+// getAffordLayer()
+
+
+// function userSelectionOptions(optionLayer) {
+//     if (!map.hasLayer(optionLayer)) {
+//         map.addLayer(optionLayer)
+//     } else {
+//         map.removeLayer(optionLayer)
+//     }
 // }

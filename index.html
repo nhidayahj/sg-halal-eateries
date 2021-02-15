@@ -11,6 +11,11 @@
         crossorigin="" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
 
     <link rel="stylesheet" href="style.css">
 
@@ -36,29 +41,33 @@
                     <a class="col-2 dropdown-toggle cuisineOptions" id="cuisineBtn" href="#" role="button"
                         data-toggle="modal" data-target="#cuisineList">cuisines</a>
 
-                    <div class=" col-2 dropdown">
-                        <a class="dropdown-toggle" id="priceBtn" href="#" role="button"
-                            data-toggle="dropdown">prices</a>
+                    <div class="col-2 dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" id="priceBtn"
+                            data-toggle="dropdown">prices</button>
 
                         <!-- Dropdown for prices -->
                         <div class="dropdown-menu">
-                            <a class="dropdown-item  price-item" href="#" id="afford">$</a>
-                            <a class="dropdown-item  price-item" href="#" id="mid_range">$$</a>
-                            <a class="dropdown-item  price-item" href="#" id="exp">$$$</a>
+                            <button class="dropdown-item  price-item" id="afford" value="$">$</button>
+                            <button class="dropdown-item  price-item" id="mid_range" value="$$">$$</button>
+                            <button class="dropdown-item  price-item" id="exp" value="$$$">$$$</button>
+
                         </div>
                     </div>
 
                     <div class="col-2 dropdown">
-                        <a class="dropdown-toggle" id="ratingsBtn" href="#" role="button"
-                            data-toggle="dropdown">ratings</a>
+                        <button class="btn btn-primary dropdown-toggle" id="ratingsBtn"
+                            data-toggle="dropdown">ratings</button>
 
                         <!-- Dropdown for ratings -->
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#" id="accept">Acceptable</a>
-                            <a class="dropdown-item" href="#" id="good">Good</a>
-                            <a class="dropdown-item" href="#" id="recommend">Recommended</a>
+                            <button class="dropdown-item" id="accept">Acceptable</button>
+                            <button class="dropdown-item" id="good">Good</button>
+                            <button class="dropdown-item" id="recommend">Recommended</button>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
 
@@ -90,20 +99,14 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-            <div class="map-area mt-3">
-                <div id="map">
-
-                </div>
-            </div>
         </div>
 
+        <!-- Map Div  -->
+        <div class="map-area mt-3">
+            <div id="map">
+
+            </div>
+        </div>
 
     </div>
 
@@ -125,6 +128,7 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
     <script src="load-data.js"></script>
     <script src="load-map.js"></script>
     <script src="script.js"></script>
