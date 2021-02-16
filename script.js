@@ -15,8 +15,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.log("clean list: ", cleanFullData)
 
     //load map with ALL the markers at initial load page
-    showMarkerTooltip(map,cleanFullData,showAllLayer)
-
+    showMarkerTooltip(map, cleanFullData, showAllLayer)
 
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
@@ -59,15 +58,22 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
     document.querySelector("#afford").addEventListener('click', function () {
+        map.removeLayer(showAllLayer)
+        map.removeLayer(midLayer)
+        
         let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
-        showMarkerTooltip(map, affordPriceList, affordLayer);
-        //userSelectionOptions(affordLayer)
+        // showMarkerTooltip(map, affordPriceList, affordLayer);
+        userSelectionOptions(affordPriceList, affordLayer)
+
     })
 
     document.querySelector("#mid_range").addEventListener('click', function () {
+         map.removeLayer(showAllLayer)
+         map.removeLayer(affordLayer)
+         
         let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
-        showMarkerTooltip(map, midPriceList, midLayer);
-        //userSelectionOptions(midRangeLayer)
+        //showMarkerTooltip(map, midPriceList, midLayer);
+        userSelectionOptions(midPriceList, midLayer)
     })
 
 })

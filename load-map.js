@@ -21,12 +21,18 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 
 let showAllLayer = L.markerClusterGroup();
-let affordLayer = L.markerClusterGroup();
+showAllLayer.addTo(map)
 let midLayer = L.markerClusterGroup();
+midLayer.addTo(map)
+let affordLayer = L.markerClusterGroup();
+affordLayer.addTo(map)
 
 
 // function to create the markers & display its info in a tooltip 
 function showMarkerTooltip(map, data, layer) {
+    //console.log("showMarkerTooltip")
+    //console.log(layer);
+    layer.clearLayers()
     let lat = parseFloat("");
     let lng = parseFloat("");
     let markers = null;
@@ -34,7 +40,7 @@ function showMarkerTooltip(map, data, layer) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
-        ratings = i.ratings
+            ratings = i.ratings
 
         //create markers for each
         markers = L.marker([lat, lng])
@@ -46,16 +52,21 @@ function showMarkerTooltip(map, data, layer) {
         `).openTooltip();
         markers.addTo(layer);
     }
-    layer.addTo(map)
+    //layer.addTo(map)
 }
 
-// function userSelectionOptions(layer) {
-//     if (!map.hasLayer(layer)) {
-//         map.addLayer(layer)
-//     } else {
-//         map.remove(layer)
-//     }
-// }
+function userSelectionOptions(priceList, layer) {
+
+    if (map.hasLayer(layer) == false) {
+        map.addLayer(layer);
+    }
+    // console.log(layer)
+    // if (map.hasLayer(layer) == false) {
+    showMarkerTooltip(map, priceList, layer);
+    // } else {
+    //     map.removeLayer(layer)
+    // }
+}
 
 // create user dropdown selections
 // document.querySelector("#afford").addEventListener('click', function () {
