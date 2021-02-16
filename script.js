@@ -57,10 +57,35 @@ window.addEventListener('DOMContentLoaded', async () => {
     //console.log("List of price Range: ", priceList)
 
 
+
+    // categorize data by ratings range
+    let ratingsList = {
+        'low': [],
+        'medium': [],
+        'high': []
+    }
+    for (let i of cleanFullData) {
+        if (i.ratings < 3) {
+            ratingsList['low'].push(i.name)
+        } else if (i.ratings <= 4) {
+            ratingsList['medium'].push(i.name)
+        } else if (i.ratings <= 5) {
+            ratingsList['high'].push(i.name)
+        }
+    }
+    //console.log(ratingsList)
+
+
+
+    //let currentLayer;
+
     document.querySelector("#afford").addEventListener('click', function () {
         map.removeLayer(showAllLayer)
         map.removeLayer(midLayer)
-        
+        map.removeLayer(lowRatingsLayer)
+
+        //checks if there is an existing previous layer on map
+
         let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
         // showMarkerTooltip(map, affordPriceList, affordLayer);
         userSelectionOptions(affordPriceList, affordLayer)
@@ -68,13 +93,27 @@ window.addEventListener('DOMContentLoaded', async () => {
     })
 
     document.querySelector("#mid_range").addEventListener('click', function () {
-         map.removeLayer(showAllLayer)
-         map.removeLayer(affordLayer)
-         
+        map.removeLayer(showAllLayer)
+        map.removeLayer(affordLayer)
+        map.removeLayer(lowRatingsLayer)
+
         let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
         //showMarkerTooltip(map, midPriceList, midLayer);
         userSelectionOptions(midPriceList, midLayer)
     })
+
+
+    document.getElementById('low').addEventListener('click', function () {
+        map.removeLayer(showAllLayer)
+        map.removeLayer(affordLayer)
+        map.removeLayer(midLayer)
+
+        let lowRatings = getRatingsLatLng(cleanFullData, ratingsList['low'])
+        userSelectionOptions(lowRatings, lowRatingsLayer)
+    })
+
+
+
 
 })
 

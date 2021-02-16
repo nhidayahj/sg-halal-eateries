@@ -16,8 +16,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
 }).addTo(map);
 
-// call markers & tooltip func
-//showMarkerTooltip(map, data);
 
 
 let showAllLayer = L.markerClusterGroup();
@@ -26,6 +24,8 @@ let midLayer = L.markerClusterGroup();
 midLayer.addTo(map)
 let affordLayer = L.markerClusterGroup();
 affordLayer.addTo(map)
+let lowRatingsLayer = L.markerClusterGroup();
+lowRatingsLayer.addTo(map)
 
 
 // function to create the markers & display its info in a tooltip 
@@ -55,34 +55,26 @@ function showMarkerTooltip(map, data, layer) {
     //layer.addTo(map)
 }
 
-function userSelectionOptions(priceList, layer) {
+// remembers the previous shown layer; 
 
+//let currentLayer = []
+function userSelectionOptions(list, layer) {
+    
     if (map.hasLayer(layer) == false) {
         map.addLayer(layer);
+        //currentLayer.push(layer)
     }
-    // console.log(layer)
-    // if (map.hasLayer(layer) == false) {
-    showMarkerTooltip(map, priceList, layer);
-    // } else {
-    //     map.removeLayer(layer)
-    // }
+    showMarkerTooltip(map, list, layer);
+    //return currentLayer;
 }
 
-// create user dropdown selections
-// document.querySelector("#afford").addEventListener('click', function () {
-//     let data = getPriceRangeLatLng()
-//     userSelectionOptions(affordLayer)
-// })
-
-// document.querySelector("#mid_range").addEventListener('click', function () {
-
-//     userSelectionOptions(midRangeLayer)
-// })
-
-
-
-
-
+function checksExistingLayer(map,layer) {
+    if(!layer) {
+        userSelectionOptions();
+    } else {
+        map.removeLayer(layer)
+    }
+}
 
 
 // create the price layers
@@ -110,11 +102,3 @@ function userSelectionOptions(priceList, layer) {
 
 // getAffordLayer()
 
-
-// function userSelectionOptions(optionLayer) {
-//     if (!map.hasLayer(optionLayer)) {
-//         map.addLayer(optionLayer)
-//     } else {
-//         map.removeLayer(optionLayer)
-//     }
-// }

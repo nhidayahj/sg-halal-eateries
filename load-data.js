@@ -26,9 +26,9 @@ async function getCuisineType() {
 async function createCuisineCheckBox() {
     let cuisineArr = await getCuisineType();
     let dropdownOption = document.querySelector(".displayCuisine")
-    for(let i of cuisineArr) {
+    for (let i of cuisineArr) {
         let newCheckBox = `
-        <input type="checkbox" class="cuisine" name="${i}" value="${i.toLowerCase().replace(" ","-")}"/>
+        <input type="checkbox" class="cuisine" name="${i}" value="${i.toLowerCase().replace(" ", "-")}"/>
         <label>${i}</label>
         <p>
         `
@@ -118,10 +118,10 @@ function getPriceRangeLatLng(cleanData, pricelist) {
         for (let j of cleanData) {
             if (j.name == i) {
                 priceRangeLatLng.push({
-                    'name':j.name,
-                    'latitude':j.latitude,
-                    'longitude':j.longitude,
-                    'ratings':j.ratings
+                    'name': j.name,
+                    'latitude': j.latitude,
+                    'longitude': j.longitude,
+                    'ratings': j.ratings
                 })
             }
         }
@@ -131,12 +131,43 @@ function getPriceRangeLatLng(cleanData, pricelist) {
 }
 
 
+
+
 // group the ratings 
-function getRatings(data) {
-    let ratingsObj;
-    for (let i of data) {
-        if (i.ratings < 2.5) {
-            ratings.push(['good'])
+// function getRatings(data) {
+//     let ratingsList = {
+//         'low': [],
+//         'medium': [],
+//         'high': []
+//     }
+//     for (let i of data) {
+//         if (i.ratings < 3) {
+//             ratingsList['low'].push(i.name)
+//         } else if (i.ratings <= 4) {
+//             ratingsList['medium'].push(i.name)
+//         } else if (i.ratings <= 5) {
+//             ratingsList['high'].push(i.name)
+//         }
+//     }
+//     return ratingsList
+//     //    console.log("ratings list: ", ratingsList)
+// }
+
+// get the lat-lngs for ratings
+function getRatingsLatLng(cleanData,ratings) {
+    let ratingsLatLng = [];
+    for (let i of ratings) {
+        for (let j of cleanData) {
+            if(j.name == i) {
+                ratingsLatLng.push({
+                    'name':j.name,
+                    'latitude':j.latitude,
+                    'longitude':j.longitude,
+                    'ratings':j.ratings
+                })
+            }
         }
     }
+    return ratingsLatLng;
+    //console.log("Ratings Lat-Lng: " , ratingsLatLng)
 }
