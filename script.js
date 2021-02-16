@@ -77,17 +77,21 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
 
-    //let currentLayer;
+    // let currentLayer;
+    // let isThereLayer = false;
 
     document.querySelector("#afford").addEventListener('click', function () {
         map.removeLayer(showAllLayer)
         map.removeLayer(midLayer)
         map.removeLayer(lowRatingsLayer)
+        map.removeLayer(medRatingsLayer)
+        map.removeLayer(highRatingsLayer)
 
-        //checks if there is an existing previous layer on map
 
         let affordPriceList = getPriceRangeLatLng(cleanFullData, priceList['affordable'])
-        // showMarkerTooltip(map, affordPriceList, affordLayer);
+        //checks if there is an existing previous layer on map
+        // isThereLayer = checksExistingLayer(isThereLayer,affordPriceList,affordLayer)
+
         userSelectionOptions(affordPriceList, affordLayer)
 
     })
@@ -96,9 +100,14 @@ window.addEventListener('DOMContentLoaded', async () => {
         map.removeLayer(showAllLayer)
         map.removeLayer(affordLayer)
         map.removeLayer(lowRatingsLayer)
+        map.removeLayer(medRatingsLayer)
+        map.removeLayer(highRatingsLayer)
 
+        //checks 
+    
         let midPriceList = getPriceRangeLatLng(cleanFullData, priceList['mid_range'])
-        //showMarkerTooltip(map, midPriceList, midLayer);
+        // isThereLayer = checksExistingLayer(isThereLayer,midPriceList,midLayer)
+        
         userSelectionOptions(midPriceList, midLayer)
     })
 
@@ -107,11 +116,36 @@ window.addEventListener('DOMContentLoaded', async () => {
         map.removeLayer(showAllLayer)
         map.removeLayer(affordLayer)
         map.removeLayer(midLayer)
+        map.removeLayer(medRatingsLayer)
+        map.removeLayer(highRatingsLayer)
 
         let lowRatings = getRatingsLatLng(cleanFullData, ratingsList['low'])
         userSelectionOptions(lowRatings, lowRatingsLayer)
     })
 
+    document.getElementById('medium').addEventListener('click', function () {
+        map.removeLayer(showAllLayer)
+        map.removeLayer(affordLayer)
+        map.removeLayer(midLayer)
+        map.removeLayer(lowRatingsLayer)
+        map.removeLayer(highRatingsLayer)
+
+        let medRatings = getRatingsLatLng(cleanFullData, ratingsList['medium'])
+        userSelectionOptions(medRatings, medRatingsLayer)
+
+    })
+
+    document.getElementById('high').addEventListener('click', function () {
+        map.removeLayer(showAllLayer)
+        map.removeLayer(affordLayer)
+        map.removeLayer(midLayer)
+        map.removeLayer(lowRatingsLayer)
+        map.removeLayer(medRatingsLayer)
+
+        let highRatings = getRatingsLatLng(cleanFullData, ratingsList['high'])
+        userSelectionOptions(highRatings, highRatingsLayer)
+
+    })
 
 
 

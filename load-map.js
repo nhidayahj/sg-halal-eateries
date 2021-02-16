@@ -24,9 +24,16 @@ let midLayer = L.markerClusterGroup();
 midLayer.addTo(map)
 let affordLayer = L.markerClusterGroup();
 affordLayer.addTo(map)
+
 let lowRatingsLayer = L.markerClusterGroup();
 lowRatingsLayer.addTo(map)
+let medRatingsLayer = L.markerClusterGroup();
+medRatingsLayer.addTo(map)
+let highRatingsLayer = L.markerClusterGroup();
+highRatingsLayer.addTo(map)
 
+// let currentLayer = L.LayerGroup();
+// currentLayer.addTo(map)
 
 // function to create the markers & display its info in a tooltip 
 function showMarkerTooltip(map, data, layer) {
@@ -52,29 +59,36 @@ function showMarkerTooltip(map, data, layer) {
         `).openTooltip();
         markers.addTo(layer);
     }
-    //layer.addTo(map)
+    
 }
+
 
 // remembers the previous shown layer; 
 
-//let currentLayer = []
 function userSelectionOptions(list, layer) {
-    
     if (map.hasLayer(layer) == false) {
         map.addLayer(layer);
-        //currentLayer.push(layer)
     }
     showMarkerTooltip(map, list, layer);
-    //return currentLayer;
+    //console.log(addedLayer)
 }
 
-function checksExistingLayer(map,layer) {
-    if(!layer) {
-        userSelectionOptions();
-    } else {
-        map.removeLayer(layer)
-    }
-}
+
+// function checksExistingLayer(bolLayer, list, makeLayer,layer) {
+//     let isThereLayer = false;
+//     //let isThereLayer = currentLayer.hasLayer(layer)
+//     if(!bolLayer) {
+//         console.log("layer not exist, so create one")
+//         userSelectionOptions(list,makeLayer);
+//         isThereLayer = true;
+//     } else if (bolLayer) {
+//         console.log("previous layer exists")
+//         currentLayer.removeFrom(map);
+//         userSelectionOptions(list,makeLayer);
+//         isThereLayer;
+//     }
+//     return isThereLayer;
+// }
 
 
 // create the price layers
