@@ -37,8 +37,6 @@ async function createCuisineCheckBox() {
 }
 
 
-// data for the maps 
-
 
 // get all the addresses from data.json 
 // may be redundant 
@@ -134,6 +132,11 @@ function getPriceRangeLatLng(cleanData, pricelist) {
 
 
 // group the ratings 
-// function getRatings() {
-
-// }
+function getRatings(data) {
+    let ratingsObj;
+    for (let i of data) {
+        if (i.ratings < 2.5) {
+            ratings.push(['good'])
+        }
+    }
+}
