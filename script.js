@@ -27,14 +27,19 @@ window.addEventListener('DOMContentLoaded', async () => {
     let cuisineFilterSelectBtn = document.querySelector("#cuisineFilterSuccessBtn")
     cuisineFilterSelectBtn.addEventListener('click', () => {
         let userCuisineSelection;
+        let userSelect;
         let cuisineSelection = document.querySelectorAll(".cuisine")
         for (let i of cuisineSelection) {
             if (i.checked) {
                 userCuisineSelection = i.name
+                userSelect = getCuisineSelection(userCuisineSelection);
             }
         }
-        console.log("User selected: " ,userCuisineSelection)
-        getCuisineSelection(userCuisineSelection);
+        addOnCuisineLayers(cuisineLayer, userSelect)
+        console.log("User selected: " ,userSelect)
+        userCuisineSelection = "";
+        
+        
     })
 
     

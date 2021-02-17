@@ -4,93 +4,7 @@ async function loadData() {
     return listOfPlaces;
 }
 
-// get the list of categories type for filter options
-let cuisineArr = [];
-async function getCuisineType() {
-    let listOfPlaces = await loadData()
-    let allBusinesses = listOfPlaces.moreBusinesses
-    //    console.log(allBusinesses)
-    for (let i of allBusinesses) {
-        for (let x of i.categories) {
-            if (x.title == 'Halal') {
-                continue;
-            } else if (cuisineArr.includes(x.title)) {
-                cuisineArr;
-            } else {
-                cuisineArr.push(x.title)
-            }
-        }
-    }
-    return cuisineArr;
-}
-
-//create the list of checkboxes in Cuisine filter 
-async function createCuisineCheckBox() {
-    let cuisineArr = await getCuisineType();
-    let dropdownOption = document.querySelector(".displayCuisine")
-    for (let i of cuisineArr) {
-        let newCheckBox = `
-        <input type="checkbox" class="cuisine" name="${i}" value="${i.replace(" ", "-")}"/>
-        <label>${i}</label>
-        <p>
-        `
-        dropdownOption.innerHTML += newCheckBox;
-    }
-}
-
-
-// get cuisine type with address and its lat-lng  
-let userSelectObj =[];
-function getCuisineSelection(userSelect) {
-    //console.log(newLatLngObj)
-    for (let i of newLatLngObj) {
-        let categories = i.categories;
-        for (let j of categories) {
-            if (userSelect == j.title) {
-                userSelectObj.push({
-                    'name':i.name,
-                    'lat':i.latitude,
-                    'lng':i.longitude,
-                    'ratings':i.ratings
-                })
-            }
-        }
-    }
-    console.log(userSelectObj)
-}
-
-/* 
-for (let entry in fullData)
-{
-    let cat = entry.categories;
-    for (let i in cat)
-    {
-
-        if( select == i.title)
-        {
-            //entry lat-lng
-            break;
-        }
-
-    }
-}
-*/
-
-
-
-// get all the addresses from data.json 
-// may be redundant 
-let all_addresses = []
-function getDataAddress(data) {
-    let addressCollection = data.moreBusinesses
-    for (let i of addressCollection) {
-        all_addresses.push(i.addressLine1)
-    }
-    return all_addresses;
-}
-
 // to only get the clean address for map API
-
 let clean_add = []
 function getCleanAdd(data) {
     for (let i = 0; i < data.length; i++) {
@@ -152,6 +66,85 @@ async function getUpdatedList(address) {
     //console.log("full data: ", newLatLngObj)
     return newLatLngObj;
 }
+
+
+
+// get the list of categories type from Clean Data to do up Modal Popup
+let cuisineArr = [];
+async function getCuisineType() {
+    let listOfPlaces = await loadData()
+    let allBusinesses = listOfPlaces.moreBusinesses
+    //    console.log(allBusinesses)
+    for (let i of allBusinesses) {
+        for (let x of i.categories) {
+            if (x.title == 'Halal') {
+                continue;
+            } else if (cuisineArr.includes(x.title)) {
+                cuisineArr;
+            } else {
+                cuisineArr.push(x.title)
+            }
+        }
+    }
+    return cuisineArr;
+}
+
+//create the list of checkboxes in Cuisine Modal Popup 
+async function createCuisineCheckBox() {
+    let cuisineArr = await getCuisineType();
+    let dropdownOption = document.querySelector(".displayCuisine")
+    for (let i of cuisineArr) {
+        let newCheckBox = `
+        <input type="checkbox" class="cuisine" name="${i}" value="${i.replace(" ", "-")}"/>
+        <label>${i}</label>
+        <p>
+        `
+        dropdownOption.innerHTML += newCheckBox;
+    }
+}
+
+
+// get cuisine type from user checkbox and return its name, add & lat-lng  
+
+function getCuisineSelection(userSelect) {
+    let userSelectObj = [];
+    //console.log(newLatLngObj)
+    for (let i of newLatLngObj) {
+        let categories = i.categories;
+        for (let j of categories) {
+            if (j.title == userSelect) {
+                // check if previous user selection is alr added in this obj
+                // if it is alr added, ignore 
+                if (userSelectObj.name == userSelect) {
+                    continue;
+                }
+                userSelectObj.push({
+                    'name': i.name,
+                    'latitude': i.latitude,
+                    'longitude': i.longitude,
+                    'ratings': i.ratings
+                })
+
+            }
+        }
+    }
+    //console.log(userSelectObj)
+    return userSelectObj;
+}
+
+
+// get all the addresses from data.json 
+// may be redundant 
+// let all_addresses = []
+// function getDataAddress(data) {
+//     let addressCollection = data.moreBusinesses
+//     for (let i of addressCollection) {
+//         all_addresses.push(i.addressLine1)
+//     }
+//     return all_addresses;
+// }
+
+
 
 
 // compare different price range list with cleanData

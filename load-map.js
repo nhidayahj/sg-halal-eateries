@@ -50,5 +50,43 @@ function checksExistingLayer(currentLayer,list) {
     }
 }
 
+let cuisineLayer = L.markerClusterGroup();
+cuisineLayer.addTo(map)
 
+function addOnCuisineLayers(cuisineLayer,list){
+    if (map.hasLayer(currentLayer)) {
+        currentLayer.clearLayers()
+        userSelectionOptions(list)
+    } else if (map.hasLayer(cuisineLayer) == false) {
+        userSelectionOptions(list)
+    } 
+    // else if (map.hasLayer(cuisineLayer)) {
+    //     cuisineLayer.addLayer(cuisineLayer)
+    //     userSelectionOptions(list)
+    // } 
+}
 
+// function checkExistingCuiLayer(cuisineLayer, list) {
+//     if (map.hasLayer(cuisineLayer)) {
+//         cui
+//     }
+//     let lat = parseFloat("");
+//     let lng = parseFloat("");
+//     let markers = null;
+//     for (let i of list) {
+//         lat = i.latitude;
+//         lng = i.longitude;
+//         name = i.name,
+//         ratings = i.ratings
+
+//         //create markers for each
+//         markers = L.marker([lat, lng])
+//         //create a tooltip for each
+//         markers.bindTooltip(`
+//         <p><b>${name}</b></p>
+//         <p>Ratings: ${ratings}⭐</p>
+//         <p>Click for more info</p>
+//         `).openTooltip();
+//         markers.addTo(currentLayer)
+//     }
+// }
