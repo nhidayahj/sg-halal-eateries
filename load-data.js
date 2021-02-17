@@ -5,14 +5,16 @@ async function loadData() {
 }
 
 // get the list of categories type for filter options
+let cuisineArr = [];
 async function getCuisineType() {
     let listOfPlaces = await loadData()
-    let cuisineArr = [];
     let allBusinesses = listOfPlaces.moreBusinesses
     //    console.log(allBusinesses)
     for (let i of allBusinesses) {
         for (let x of i.categories) {
-            if (cuisineArr.includes(x.title)) {
+            if (x.title == 'Halal') {
+                continue;
+            } else if (cuisineArr.includes(x.title)) {
                 cuisineArr;
             } else {
                 cuisineArr.push(x.title)
@@ -28,7 +30,7 @@ async function createCuisineCheckBox() {
     let dropdownOption = document.querySelector(".displayCuisine")
     for (let i of cuisineArr) {
         let newCheckBox = `
-        <input type="checkbox" class="cuisine" name="${i}" value="${i.toLowerCase().replace(" ", "-")}"/>
+        <input type="checkbox" class="cuisine" name="${i}" value="${i.replace(" ", "-")}"/>
         <label>${i}</label>
         <p>
         `
@@ -37,6 +39,35 @@ async function createCuisineCheckBox() {
 }
 
 
+// get cuisine type with address and its lat-lng  
+// let userSelectObj;
+function getCuisineSelection(select,fullData) {
+    //console.log(newLatLngObj)
+    for (let i of newLatLngObj) {
+        console.log(i)
+        }
+    }
+
+
+
+/* 
+for (let entry in fullData)
+{
+    let cat = entry.categories;
+    for (let i in cat)
+    {
+
+        if( select == i.title)
+        {
+            //entry lat-lng
+            break;
+        }
+
+    }
+}
+*/
+
+//try the map
 
 // get all the addresses from data.json 
 // may be redundant 
@@ -60,14 +91,17 @@ function getCleanAdd(data) {
                 'name': data[i].name,
                 'full_address': data[i].addressLine1,
                 'ratings': data[i].rating,
-                'priceRange': data[i].priceRange
+                'priceRange': data[i].priceRange,
+                'categories': data[i].categories
+
             })
         } else if (indexComma) {
             clean_add.push({
                 'name': data[i].name,
                 'full_address': data[i].addressLine1.slice(0, indexComma),
                 'ratings': data[i].rating,
-                'priceRange': data[i].priceRange
+                'priceRange': data[i].priceRange,
+                'categories': data[i].categories
             })
         }
     }
@@ -99,6 +133,7 @@ async function getUpdatedList(address) {
                 'full_address': result.results[0]['ADDRESS'],
                 'ratings': i.ratings,
                 'priceRange': i.priceRange,
+                'categories': i.categories,
                 'postal': result.results[0]['POSTAL'],
                 'latitude': result.results[0]['LATITUDE'],
                 'longitude': result.results[0]['LONGITUDE']
@@ -109,7 +144,7 @@ async function getUpdatedList(address) {
     return newLatLngObj;
 }
 
-
+console.log(newLatLngObj)
 
 // compare different price range list with cleanData
 function getPriceRangeLatLng(cleanData, pricelist) {
@@ -132,38 +167,17 @@ function getPriceRangeLatLng(cleanData, pricelist) {
 
 
 
-
-// group the ratings 
-// function getRatings(data) {
-//     let ratingsList = {
-//         'low': [],
-//         'medium': [],
-//         'high': []
-//     }
-//     for (let i of data) {
-//         if (i.ratings < 3) {
-//             ratingsList['low'].push(i.name)
-//         } else if (i.ratings <= 4) {
-//             ratingsList['medium'].push(i.name)
-//         } else if (i.ratings <= 5) {
-//             ratingsList['high'].push(i.name)
-//         }
-//     }
-//     return ratingsList
-//     //    console.log("ratings list: ", ratingsList)
-// }
-
 // get the lat-lngs for ratings
-function getRatingsLatLng(cleanData,ratings) {
+function getRatingsLatLng(cleanData, ratings) {
     let ratingsLatLng = [];
     for (let i of ratings) {
         for (let j of cleanData) {
-            if(j.name == i) {
+            if (j.name == i) {
                 ratingsLatLng.push({
-                    'name':j.name,
-                    'latitude':j.latitude,
-                    'longitude':j.longitude,
-                    'ratings':j.ratings
+                    'name': j.name,
+                    'latitude': j.latitude,
+                    'longitude': j.longitude,
+                    'ratings': j.ratings
                 })
             }
         }

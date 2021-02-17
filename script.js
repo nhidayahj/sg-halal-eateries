@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.log("clean list: ", cleanFullData)
 
     //load map with ALL the markers at initial load page
-    //showMarkerTooltip(map, cleanFullData, showAllLayer)
+    
 
     let cuisineArr = await getCuisineType()
     //console.log("all cuisine:" ,cuisineArr)
@@ -23,17 +23,23 @@ window.addEventListener('DOMContentLoaded', async () => {
     // display cuisine checkbox in Cuisine filter 
     await createCuisineCheckBox();
     //store user's cuisine selection
-    let userCuisineSelection = [];
+    
     let cuisineFilterSelectBtn = document.querySelector("#cuisineFilterSuccessBtn")
     cuisineFilterSelectBtn.addEventListener('click', () => {
+        let userCuisineSelection = [];
         let cuisineSelection = document.querySelectorAll(".cuisine")
         for (let i of cuisineSelection) {
             if (i.checked) {
-                userCuisineSelection.push(i.value)
+                userCuisineSelection.push(i.name)
             }
         }
-        //console.log(userCuisineSelection)
+        console.log("User selected: " ,userCuisineSelection)
+        //userCuisineSelection.forEach(getCuisineSelection)
+        getCuisineSelection(userCuisineSelection, cleanFullData);
     })
+
+    
+
 
     // categorize data by their price range
     let priceList = {
@@ -77,7 +83,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
 
-    
+    checksExistingLayer(currentLayer, cleanFullData)
 
     document.querySelector("#afford").addEventListener('click', function () {
         
