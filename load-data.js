@@ -95,7 +95,7 @@ async function createCuisineCheckBox() {
     let dropdownOption = document.querySelector(".displayCuisine")
     for (let i of cuisineArr) {
         let newCheckBox = `
-        <input type="checkbox" class="cuisine" name="${i}" value="${i.replace(" ", "-")}"/>
+        <input type="radio" class="cuisine" name="${cuisine}" value="${i.replace(" ", "-")}"/>
         <label>${i}</label>
         <p>
         `
@@ -107,29 +107,34 @@ async function createCuisineCheckBox() {
 // get cuisine type from user checkbox and return its name, add & lat-lng  
 
 function getCuisineSelection(userSelect) {
-    let userSelectObj = [];
     //console.log(newLatLngObj)
+    let userSelectObj = [];
     for (let i of newLatLngObj) {
         let categories = i.categories;
         for (let j of categories) {
             if (j.title == userSelect) {
+                // userSelectObj['name']=i.name
+                // userSelectObj['latitude']=i.latitude
+                // userSelectObj['longitude']=i.longitude
+                // userSelectObj['ratings']=i.ratings
+                // userSelectObj['categories']=i.categories
                 // check if previous user selection is alr added in this obj
                 // if it is alr added, ignore 
-                if (userSelectObj.name == userSelect) {
-                    continue;
-                }
                 userSelectObj.push({
                     'name': i.name,
                     'latitude': i.latitude,
                     'longitude': i.longitude,
-                    'ratings': i.ratings
+                    'ratings': i.ratings,
+                    'categories': i.categories
                 })
 
             }
+
         }
     }
-    //console.log(userSelectObj)
+    console.log("User Obj: ", userSelectObj)
     return userSelectObj;
+
 }
 
 

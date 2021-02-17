@@ -30,16 +30,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         let userSelect;
         let cuisineSelection = document.querySelectorAll(".cuisine")
         for (let i of cuisineSelection) {
-            if (i.checked) {
+            if (i.selected) {
                 userCuisineSelection = i.name
                 userSelect = getCuisineSelection(userCuisineSelection);
+                
             }
         }
+        console.log("User selected: " ,userCuisineSelection)
         addOnCuisineLayers(cuisineLayer, userSelect)
-        console.log("User selected: " ,userSelect)
         userCuisineSelection = "";
-        
-        
     })
 
     
