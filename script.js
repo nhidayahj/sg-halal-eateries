@@ -26,16 +26,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     
     let cuisineFilterSelectBtn = document.querySelector("#cuisineFilterSuccessBtn")
     cuisineFilterSelectBtn.addEventListener('click', () => {
-        let userCuisineSelection = [];
+        let userCuisineSelection;
         let cuisineSelection = document.querySelectorAll(".cuisine")
         for (let i of cuisineSelection) {
             if (i.checked) {
-                userCuisineSelection.push(i.name)
+                userCuisineSelection = i.name
             }
         }
         console.log("User selected: " ,userCuisineSelection)
-        //userCuisineSelection.forEach(getCuisineSelection)
-        getCuisineSelection(userCuisineSelection, cleanFullData);
+        getCuisineSelection(userCuisineSelection);
     })
 
     

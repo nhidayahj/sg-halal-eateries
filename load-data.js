@@ -40,15 +40,24 @@ async function createCuisineCheckBox() {
 
 
 // get cuisine type with address and its lat-lng  
-// let userSelectObj;
-function getCuisineSelection(select,fullData) {
+let userSelectObj =[];
+function getCuisineSelection(userSelect) {
     //console.log(newLatLngObj)
     for (let i of newLatLngObj) {
-        console.log(i)
+        let categories = i.categories;
+        for (let j of categories) {
+            if (userSelect == j.title) {
+                userSelectObj.push({
+                    'name':i.name,
+                    'lat':i.latitude,
+                    'lng':i.longitude,
+                    'ratings':i.ratings
+                })
+            }
         }
     }
-
-
+    console.log(userSelectObj)
+}
 
 /* 
 for (let entry in fullData)
@@ -67,7 +76,7 @@ for (let entry in fullData)
 }
 */
 
-//try the map
+
 
 // get all the addresses from data.json 
 // may be redundant 
@@ -144,7 +153,6 @@ async function getUpdatedList(address) {
     return newLatLngObj;
 }
 
-console.log(newLatLngObj)
 
 // compare different price range list with cleanData
 function getPriceRangeLatLng(cleanData, pricelist) {
