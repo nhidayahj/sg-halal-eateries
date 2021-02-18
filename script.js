@@ -6,8 +6,6 @@ findBtn.addEventListener("click", async () => {
 
 let listOfPlaces;
 window.addEventListener("DOMContentLoaded", async () => {
-  //let allData = await loadData();
-  //let listOfPlaces = allData.moreBusinesses;
   listOfPlaces = await loadData();
   //raw data info:
   console.log("All the list: ", listOfPlaces);
@@ -18,7 +16,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   //load map with ALL the markers at initial load page
 
   let cuisineArr = getCuisineType(cleanFullData);
-  console.log("all cuisine:", cuisineArr);
+  //console.log("all cuisine:", cuisineArr);
 
   // display cuisine checkbox in Cuisine filter
   createCuisineCheckBox(cuisineArr);
@@ -86,6 +84,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       priceList["affordable"]
     );
     //checks if there is an existing previous layer on map
+    console.log("Afford List: ", affordPriceList);
     checksExistingLayer(currentLayer, affordPriceList);
   });
 
@@ -94,21 +93,25 @@ window.addEventListener("DOMContentLoaded", async () => {
       cleanFullData,
       priceList["mid_range"]
     );
+    console.log("Mid Range List: ", midPriceList);
     checksExistingLayer(currentLayer, midPriceList);
   });
 
   document.getElementById("low").addEventListener("click", function () {
     let lowRatings = getRatingsLatLng(cleanFullData, ratingsList["low"]);
+    console.log("Low ratings: ", lowRatings);
     checksExistingLayer(currentLayer, lowRatings);
   });
 
   document.getElementById("medium").addEventListener("click", function () {
     let medRatings = getRatingsLatLng(cleanFullData, ratingsList["medium"]);
+    console.log("Medium Ratings: ", medRatings);
     checksExistingLayer(currentLayer, medRatings);
   });
 
   document.getElementById("high").addEventListener("click", function () {
     let highRatings = getRatingsLatLng(cleanFullData, ratingsList["high"]);
+    console.log("High Ratings: ", highRatings);
     checksExistingLayer(currentLayer, highRatings);
   });
 });
