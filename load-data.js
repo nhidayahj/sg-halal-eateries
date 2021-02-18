@@ -95,7 +95,7 @@ async function createCuisineCheckBox() {
     let dropdownOption = document.querySelector(".displayCuisine")
     for (let i of cuisineArr) {
         let newCheckBox = `
-        <input type="radio" class="cuisine" name="${cuisine}" value="${i.replace(" ", "-")}"/>
+        <input type="radio" class="cuisine" name="cuisine" value="${i}"/>
         <label>${i}</label>
         <p>
         `
