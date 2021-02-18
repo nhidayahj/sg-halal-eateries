@@ -31,16 +31,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         let cuisineSelection = document.querySelectorAll(".cuisine")
         for (let i of cuisineSelection) {
             if (i.checked) {
-                
-                //userCuisineSelection = i.value
                 console.log("User selected: " , i.value)
                 userSelect = getCuisineSelection(i.value);
-                
             }
         }
-        
-        addOnCuisineLayers(cuisineLayer, userSelect)
-        //userCuisineSelection = "";
+        addCuisineLayers(cuisineLayer, userSelect)
     })
 
     

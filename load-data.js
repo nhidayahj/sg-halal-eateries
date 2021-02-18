@@ -104,22 +104,14 @@ async function createCuisineCheckBox() {
 }
 
 
-// get cuisine type from user checkbox and return its name, add & lat-lng  
+// get cuisine type from user radio and return its name, add & lat-lng  
 
 function getCuisineSelection(userSelect) {
-    //console.log(newLatLngObj)
     let userSelectObj = [];
     for (let i of newLatLngObj) {
         let categories = i.categories;
         for (let j of categories) {
             if (j.title == userSelect) {
-                // userSelectObj['name']=i.name
-                // userSelectObj['latitude']=i.latitude
-                // userSelectObj['longitude']=i.longitude
-                // userSelectObj['ratings']=i.ratings
-                // userSelectObj['categories']=i.categories
-                // check if previous user selection is alr added in this obj
-                // if it is alr added, ignore 
                 userSelectObj.push({
                     'name': i.name,
                     'latitude': i.latitude,
@@ -127,29 +119,12 @@ function getCuisineSelection(userSelect) {
                     'ratings': i.ratings,
                     'categories': i.categories
                 })
-
             }
-
         }
     }
     console.log("User Obj: ", userSelectObj)
     return userSelectObj;
-
 }
-
-
-// get all the addresses from data.json 
-// may be redundant 
-// let all_addresses = []
-// function getDataAddress(data) {
-//     let addressCollection = data.moreBusinesses
-//     for (let i of addressCollection) {
-//         all_addresses.push(i.addressLine1)
-//     }
-//     return all_addresses;
-// }
-
-
 
 
 // compare different price range list with cleanData

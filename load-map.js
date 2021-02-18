@@ -15,6 +15,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw' //demo access token
 }).addTo(map);
 
+// customize icon for marker 
+let myIcon = L.icon({
+    iconUrl: 'pin.png',
+    iconSize: [32, 32],
+    iconAnchor: [14, 30],
+})
+
 
 let currentLayer = L.markerClusterGroup();
 currentLayer.addTo(map)
@@ -30,7 +37,7 @@ function userSelectionOptions(list) {
         ratings = i.ratings
 
         //create markers for each
-        markers = L.marker([lat, lng])
+        markers = L.marker([lat, lng], {icon: myIcon})
         //create a tooltip for each
         markers.bindTooltip(`
         <p><b>${name}</b></p>
@@ -53,40 +60,12 @@ function checksExistingLayer(currentLayer,list) {
 let cuisineLayer = L.markerClusterGroup();
 cuisineLayer.addTo(map)
 
-function addOnCuisineLayers(cuisineLayer,list){
+function addCuisineLayers(cuisineLayer,list){
     if (map.hasLayer(currentLayer)) {
         currentLayer.clearLayers()
         userSelectionOptions(list)
     } else if (map.hasLayer(cuisineLayer) == false) {
         userSelectionOptions(list)
     } 
-    // else if (map.hasLayer(cuisineLayer)) {
-    //     cuisineLayer.addLayer(cuisineLayer)
-    //     userSelectionOptions(list)
-    // } 
 }
 
-// function checkExistingCuiLayer(cuisineLayer, list) {
-//     if (map.hasLayer(cuisineLayer)) {
-//         cui
-//     }
-//     let lat = parseFloat("");
-//     let lng = parseFloat("");
-//     let markers = null;
-//     for (let i of list) {
-//         lat = i.latitude;
-//         lng = i.longitude;
-//         name = i.name,
-//         ratings = i.ratings
-
-//         //create markers for each
-//         markers = L.marker([lat, lng])
-//         //create a tooltip for each
-//         markers.bindTooltip(`
-//         <p><b>${name}</b></p>
-//         <p>Ratings: ${ratings}⭐</p>
-//         <p>Click for more info</p>
-//         `).openTooltip();
-//         markers.addTo(currentLayer)
-//     }
-// }
