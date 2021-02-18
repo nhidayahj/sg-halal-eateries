@@ -1,232 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
 
     <link rel="stylesheet" href="style.css" />
 
     <title>SG Halal Eateries</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container-fluid">
-      <div class="container-fluid page-header">
-        <div class="row" id="top-header-section">
-          <h1 class="col-12 justify-content-center" id="header-title">
-            search halal eateries
-          </h1>
-          <div class="row search-header">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="search restaurant name"
-              id="search-bar"
-            />
-            <button type="button" class="btn btn-success" id="find-btn">
-              Find
-            </button>
-            <button
-              type="button"
-              class="btn btn-info"
-              id="filter-btn"
-              data-toggle="collapse"
-              data-target="#filterOptions"
-            >
-              Filter By
-            </button>
-          </div>
-        </div>
-
-        <!-- Collapsable options when filter btn is clicked -->
-        <div class="container collapse mt-3" id="filterOptions">
-          <div class="row nav-collapse">
-            <div class="col-2 dropdown">
-              <button
-                type="button"
-                class="cuisineOptions btn btn-info dropdown-toggle"
-                id="cuisineBtn"
-                data-toggle="modal"
-                data-target="#cuisineList"
-              >
-                cuisines
-              </button>
-
-              <!-- Modal View for Cuisine List-->
-              <div
-                class="modal fade"
-                id="cuisineList"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLongTitle"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">
-                        Cuisine
-                      </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+        <div class="row page-header">
+            <!-- header icon 1 -->
+            <div class="col-3 header-icon" id="halal-img">
+                <img src="icons/halal.png" alt="halal-pic" class="header-icon" />
+            </div>
+            <div class="col-6 title-header">
+                <h1 id="header-title">halal eateries</h1>
+                <div class="row">
+                    <div class="col-sm-10 search-bar">
+                        <input type="text" class="form-control" placeholder="search by location" />
                     </div>
-                    <div class="modal-body">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="displayCuisine col-6">
-                            <!-- display checkboxes of all cuisine types -->
-                          </div>
-                        </div>
-                      </div>
+                    <div class="btns">
+                        <button class="btn btn-primary btn-sm" id="find-btn">Find</button>
+                        <button class="btn btn-info btn-sm" id="filter-btn" data-toggle="collapse"
+                            data-target="#filterOptions">
+                            Filter
+                        </button>
                     </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-danger"
-                        data-dismiss="modal"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="button"
-                        id="cuisineFilterSuccessBtn"
-                        class="btn btn-success"
-                        data-dismiss="modal"
-                      >
-                        Apply
-                      </button>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-
-            <!-- dropdown for price range -->
-            <div class="col-2 dropdown">
-              <button
-                type="button"
-                class="btn btn-info dropdown-toggle"
-                id="priceBtn"
-                data-toggle="dropdown"
-              >
-                prices
-              </button>
-
-              <!-- Dropdown for prices -->
-              <div class="dropdown-menu">
-                <button class="dropdown-item price-item" id="afford" value="$">
-                  $
-                </button>
-                <button
-                  class="dropdown-item price-item"
-                  id="mid_range"
-                  value="$$"
-                >
-                  $$
-                </button>
-                <button class="dropdown-item price-item" id="exp" value="$$$">
-                  $$$
-                </button>
-              </div>
+            <!-- header icon 2 -->
+            <div class="col-3 header-icon" id="halal-store">
+                <img src="icons/halal-store.png" alt="halal-icon" class="header-icon" />
             </div>
-
-            <!-- dropdown for ratings -->
-            <div class="col-2 dropdown">
-              <button
-                class="btn btn-info dropdown-toggle"
-                id="ratingsBtn"
-                data-toggle="dropdown"
-              >
-                ratings
-              </button>
-
-              <!-- Dropdown for ratings -->
-              <div class="dropdown-menu">
-                <button class="dropdown-item" id="low">Low</button>
-                <button class="dropdown-item" id="medium">Medium</button>
-                <button class="dropdown-item" id="high">High</button>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+        <!-- Collapsable Div -->
+        <div class="container-fluid collapse" id="filterOptions">
+            <!-- include wrapper div -->
+            <div class="wrapper">
+                <div class="row nav-collapse">
+                    <div class="row-sm-4 dropdown">
+                        <button class="cuisineOptions btn btn-light btn-sm dropdown-toggle" id="cuisineBtn"
+                            data-toggle="modal" data-target="#cuisineList">
+                            cuisines
+                        </button>
 
-      <!-- Map Div  -->
-      <div class="map-area mt-3">
-        <div id="map"></div>
-      </div>
+                        <!-- Modal View for Cuisine List within Dropdown -->
+                        <div class="modal fade" id="cuisineList" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                            Cuisines
+                                        </h5>
+                                        <button class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="displayCuisine col-6">
+                                                    <!-- display radio options of cuisine types -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-danger" data-dismiss="modal">
+                                                Cancel
+                                            </button>
+                                            <button class="btn btn-success" data-dismiss="modal"
+                                                id="cuisineFilterSuccessBtn">
+                                                Apply
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dropdown for Price Range -->
+                    <div class="row-sm-4 dropdown">
+                        <button class="btn btn-light btn-sm dropdown-toggle" id="priceBtn" data-toggle="dropdown">
+                            prices
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item price-item" id="afford">$</button>
+                            <button class="dropdown-item price-item" id="mid_range">
+                                $$
+                            </button>
+                            <button class="dropdown-item price-item" id="exp">$$$</button>
+                        </div>
+                    </div>
+
+                    <!-- dropdown for ratings -->
+                    <div class="row-sm-4 dropdown">
+                        <button class="btn btn-light btn-sm dropdown-toggle" id="ratingsBtn" data-toggle="dropdown">
+                            ratings
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" id="low">Low</button>
+                            <button class="dropdown-item" id="medium">Medium</button>
+                            <button class="dropdown-item" id="high">High</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- map div -->
+        <div class="map-area mt-3">
+            <div id="map"></div>
+        </div>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
     <script src="load-data.js"></script>
     <script src="load-map.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>

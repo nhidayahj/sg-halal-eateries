@@ -17,7 +17,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // customize icon for marker 
 let myIcon = L.icon({
-    iconUrl: 'pin.png',
+    iconUrl: 'icons/pin.png',
     iconSize: [32, 32],
     iconAnchor: [14, 30],
 })

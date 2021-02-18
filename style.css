@@ -1,21 +1,53 @@
-.container-fluid {
-  padding: 0%;
-}
 .page-header {
-  padding: 0%;
-  /* background-color: goldenrod; */
-  background-color: rgba(115, 172, 11, 0.521);
-  height: 22vh;
+  margin-bottom: 20px;
 }
 
 #header-title {
   font-family: "Rubik", sans-serif;
   padding-top: 20px;
   text-align: center;
-  /* font-size: 6vw; */
-  font-weight: bold;
 }
 
+#halal-img {
+  padding-top: 30px;
+  text-align: right;
+}
+
+#halal-store {
+  padding-top: 30px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.title-header {
+  padding: 0%;
+}
+
+/* resizing the header icons  */
+@media only screen and (max-width: 768px) {
+  .header-icon {
+    width: 65px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header-icon {
+    width: 85px;
+  }
+}
+.header-icon {
+  height: auto;
+}
+
+/* resizing search bar and buttons */
+@media only screen and (max-width: 425px) {
+  /* .btns {
+    align-items: center;
+  } */
+  .btns {
+    width: 100%;
+  }
+}
 .search-header {
   margin-left: 20%;
   margin-right: 20%;
@@ -23,28 +55,31 @@
 }
 
 #search-bar {
-  width: 45vw;
+  text-align: center;
 }
 
 #find-btn {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 #filter-btn {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .nav-collapse {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-.filterOptions {
+#filterOptions {
   font-family: "Rubik", sans-serif;
-  /* padding: 18px; */
-  /* height:15px; */
-  font-size: 25px;
+  margin-left: 0%;
+  margin: 18px 0 3px 0;
+  padding-inline-start: 0%;
+  padding-inline-end: 0%;
 }
 
 #map {
-  height: 90vh;
+  height: 75vh;
 }
