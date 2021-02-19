@@ -8,10 +8,9 @@ body {
 
 .page-header {
    margin-top: 5px;
-   margin-inline: 1px;
-   background-color: rgba(240, 240, 240, 0.65);
-   
- 
+   margin-left: 1px;
+   margin-right: 1px;
+   background-color: rgba(240, 240, 240, 0.45);
 }
 
 #header-title {
@@ -52,7 +51,7 @@ body {
 }
 
 .reset {
-    background-color: rgba(240, 240, 240, 0.65);
+    background-color: rgba(240, 240, 240, 0.45);
     padding-bottom: 3px;
 }
 
@@ -62,6 +61,7 @@ body {
 
 .searchResult {
     padding-block: 5px;
+    
 }
 
 
@@ -71,6 +71,8 @@ body {
     width: 65px;
   }
   .displayCuisine{width:fit-content}
+  .reset{padding-top:5px}
+  
 }
 
 @media only screen and (max-width: 425px) {
@@ -80,7 +82,8 @@ body {
   .header-icon {
     width: 85px;
   }
-  .searchResult{font-size:2vw}
+  .searchResult{font-size:20px}
+  
 }
 .header-icon {
   height: auto;
@@ -117,7 +120,7 @@ body {
 }
 
 #filterOptions {
-  background-color: rgba(240, 240, 240, 0.65);
+  background-color: rgba(240, 240, 240, 0.45);
   font-family: "Rubik", sans-serif;
   padding-top: 5px;
   padding-inline-start: 0%;
@@ -128,3 +131,7 @@ body {
 #map {
   height: 75vh;
 }
+
+/* body {
+    background-color: rgb(18, 151, 18);
+} */

@@ -77,9 +77,11 @@ function addCuisineLayers(cuisineLayer, list) {
 // get userSearch value
 function getUserSearch(userVal, cleanData) {
     let userSearch = []
+    let userval = userVal.toLowerCase()
     for (let i of cleanData) {
         let name = i.name.toLowerCase()
-        if (name.includes(userVal)) {
+        let address = i.full_address.toLowerCase()
+        if (name.includes(userval) || (address.includes(userval))) {
             userSearch.push({
                 'name': i.name,
                 'latitude': i.latitude,

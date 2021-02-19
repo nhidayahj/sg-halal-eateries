@@ -32,16 +32,15 @@ window.addEventListener("DOMContentLoaded", async () => {
         if (searchVal) {
             if (searchVal.length > 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                 <span style="color:green">${searchVal.length} search results found .. </span>
+                 <span style="font-weight:bold; background-color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
             `
             } else if (searchVal.length == 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                1 search result found:  
-                <span style="color:green"> ${ searchVal[0].name } .. </span>
+                <span style="font-weight:bold;background-color:rgb(18, 151, 18)"> 1 search result found .. </span>
                 `
             } else if (searchVal.length < 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                <span style="color:red"> No result found .. </span>
+                <span style="color:red; font-weight:bold"> No result found .. </span>
                 `
             }
         }
@@ -54,6 +53,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     );
     cuisineFilterSelectBtn.addEventListener("click", () => {
         let userSelect;
+        document.querySelector("#userSearch").value = "search by keywords";
+        document.querySelector(".searchResult").innerHTML = "";
+
         let cuisineSelection = document.querySelectorAll(".cuisine");
         for (let i of cuisineSelection) {
             if (i.checked) {

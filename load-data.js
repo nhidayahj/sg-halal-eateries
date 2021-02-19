@@ -164,7 +164,7 @@ function getRatingsLatLng(cleanData, ratings) {
 
 
 function clearField() {
-    document.querySelector("#userSearch").value=" ";
+    document.querySelector("#userSearch").value="search by keywords";
     document.querySelector(".searchResult").innerHTML = " "
     let radioCuisine = document.querySelectorAll(".cuisine");
     for (let i of radioCuisine) {
@@ -173,8 +173,3 @@ function clearField() {
         }
     }
 }
-
-// pop-up alerts to display if values not found
-// function displayAlert() {
-
-// }
