@@ -73,22 +73,6 @@ function addCuisineLayers(cuisineLayer, list) {
     }
 }
 
-// 1. create the layer group
-// let showAllLayer = L.layerGroup();
-// showAllLayer.addTo(map)
-
-// function addShowAllLayer(showAllLayer, list) {
-//     if(map.hasLayer(currentLayer)) {
-//         currentLayer.clearLayers()
-//         userSelectionOptions(list)
-//     } else if(map.hasLayer(cuisineLayer)) {
-//         cuisineLayer.clearLayers()
-//         userSelectionOptions(list)
-//     }
-// }
-
-
-
 
 // get userSearch value
 function getUserSearch(userVal, cleanData) {

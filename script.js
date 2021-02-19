@@ -96,6 +96,11 @@ window.addEventListener("DOMContentLoaded", async () => {
     // initial display of ALL markers
     checksExistingLayer(currentLayer, cleanFullData);
 
+    // resets back to original display after user interaction
+    document.querySelector("#reset").addEventListener("click", () => {
+        checksExistingLayer(currentLayer, cleanFullData);
+        document.querySelector("#userSearch").value="";
+    })
     
     document.querySelector("#afford").addEventListener("click", function () {
         let affordPriceList = getPriceRangeLatLng(
