@@ -24,7 +24,6 @@ window.addEventListener("DOMContentLoaded", async () => {
             $("#find-btn").click()
         }
     });
-
     
     $("#find-btn").click(function () {
         let userSearch = document.getElementById('userSearch').value
@@ -33,12 +32,12 @@ window.addEventListener("DOMContentLoaded", async () => {
         if (searchVal) {
             if (searchVal.length > 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                 There are ${searchVal.length} results found
+                 <span style="color:green">${searchVal.length} search results found .. </span>
             `
             } else if (searchVal.length == 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                There is 1 result found:  
-                <span style="color:blue"> ${ searchVal[0].name } </span>
+                1 search result found:  
+                <span style="color:green"> ${ searchVal[0].name } .. </span>
                 `
             } else if (searchVal.length < 1) {
                 document.querySelector(".searchResult").innerHTML = `
@@ -108,14 +107,13 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     // resets back to original display after user interaction
     document.querySelector("#reset").addEventListener("click", () => {
-        document.querySelector(".searchResult").innerHTML = ""
-        
+        clearField();
         checksExistingLayer(currentLayer, cleanFullData);
-        document.querySelector("#userSearch").value = "";
+        
     })
 
     document.querySelector("#afford").addEventListener("click", function () {
-        document.querySelector(".searchResult").innerHTML = ""
+        clearField()
         let affordPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["affordable"]
@@ -126,7 +124,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.querySelector("#mid_range").addEventListener("click", function () {
-        document.querySelector(".searchResult").innerHTML = ""
+        clearField();
         let midPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["mid_range"]
@@ -136,21 +134,21 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById("low").addEventListener("click", function () {
-        document.querySelector(".searchResult").innerHTML = ""
+        clearField();
         let lowRatings = getRatingsLatLng(cleanFullData, ratingsList["low"]);
         console.log("Low ratings: ", lowRatings);
         checksExistingLayer(currentLayer, lowRatings);
     });
 
     document.getElementById("medium").addEventListener("click", function () {
-        document.querySelector(".searchResult").innerHTML = ""
+        clearField();
         let medRatings = getRatingsLatLng(cleanFullData, ratingsList["medium"]);
         console.log("Medium Ratings: ", medRatings);
         checksExistingLayer(currentLayer, medRatings);
     });
 
     document.getElementById("high").addEventListener("click", function () {
-        document.querySelector(".searchResult").innerHTML = ""
+        clearField();
         let highRatings = getRatingsLatLng(cleanFullData, ratingsList["high"]);
         console.log("High Ratings: ", highRatings);
         checksExistingLayer(currentLayer, highRatings);

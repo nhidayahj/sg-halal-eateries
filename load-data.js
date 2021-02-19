@@ -161,8 +161,17 @@ function getRatingsLatLng(cleanData, ratings) {
   //console.log("Ratings Lat-Lng: " , ratingsLatLng)
 }
 
+
+
 function clearField() {
-    console.log("clear field")
+    document.querySelector("#userSearch").value=" ";
+    document.querySelector(".searchResult").innerHTML = " "
+    let radioCuisine = document.querySelectorAll(".cuisine");
+    for (let i of radioCuisine) {
+        if (i.checked) {
+            i.checked = false;
+        }
+    }
 }
 
 // pop-up alerts to display if values not found

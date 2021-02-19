@@ -43,7 +43,7 @@
 }
 
 .searchResult {
-    display: hidden;
+    padding-block: 5px;
 }
 
 
