@@ -3,6 +3,7 @@ body {
     background-repeat:no-repeat;
     background-size: cover;
     
+    
 }
 
 
@@ -131,7 +132,3 @@ body {
 #map {
   height: 75vh;
 }
-
-/* body {
-    background-color: rgb(18, 151, 18);
-} */
