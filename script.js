@@ -18,15 +18,24 @@ window.addEventListener("DOMContentLoaded", async () => {
     // display cuisine checkbox in Cuisine filter
     createCuisineCheckBox(cuisineArr);
 
-    
+    // get user inputs    
     $("#userSearch").keyup(function(event) {
         if (event.keyCode === 13) {
             $("#find-btn").click()
         }
     });
 
+    // let count = 0;
+    // let foundValues=[];
     $("#find-btn").click(function(){
-        alert("Hello!")
+       let userSearch = document.getElementById('userSearch').value
+       let searchVal = getUserSearch(userSearch, cleanFullData);
+        console.log(searchVal)
+        if (searchVal) {
+            alert(`There are ${searchVal.length} search values.`);
+        } else if (!searchVal) {
+            alert("No search entry found!")
+        }
     })
 
 
@@ -87,6 +96,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     // initial display of ALL markers
     checksExistingLayer(currentLayer, cleanFullData);
 
+    
     document.querySelector("#afford").addEventListener("click", function () {
         let affordPriceList = getPriceRangeLatLng(
             cleanFullData,

@@ -23,6 +23,7 @@ let myIcon = L.icon({
 })
 
 
+
 let currentLayer = L.markerClusterGroup();
 currentLayer.addTo(map)
 
@@ -34,45 +35,63 @@ function userSelectionOptions(list) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
-        ratings = i.ratings
+            ratings = i.ratings
 
         //create markers for each
-        markers = L.marker([lat, lng], {icon: myIcon})
+        markers = L.marker([lat, lng], { icon: myIcon })
         //create a tooltip for each
         markers.bindTooltip(`
         <p><b>${name}</b></p>
         <p>Ratings: ${ratings}⭐</p>
         <p>Click for more info</p>
-        `).openTooltip();
+        `).openTooltip()
         markers.addTo(currentLayer)
     }
 }
 
-function checksExistingLayer(currentLayer,list) {
+function checksExistingLayer(currentLayer, list) {
     if (map.hasLayer(currentLayer) == false) {
         userSelectionOptions(list)
     } else {
         currentLayer.clearLayers()
         userSelectionOptions(list)
-    }
+    } 
 }
 
 let cuisineLayer = L.markerClusterGroup();
 cuisineLayer.addTo(map)
 
-function addCuisineLayers(cuisineLayer,list){
+function addCuisineLayers(cuisineLayer, list) {
     if (map.hasLayer(currentLayer)) {
         currentLayer.clearLayers()
         userSelectionOptions(list)
     } else if (map.hasLayer(cuisineLayer) == false) {
         userSelectionOptions(list)
-    } 
+    } else if (map.hasLayer(showAllLayer)) {
+        showAllLayer.clearLayers()
+        userSelectionOptions(list)
+    }
 }
+
+// 1. create the layer group
+// let showAllLayer = L.layerGroup();
+// showAllLayer.addTo(map)
+
+// function addShowAllLayer(showAllLayer, list) {
+//     if(map.hasLayer(currentLayer)) {
+//         currentLayer.clearLayers()
+//         userSelectionOptions(list)
+//     } else if(map.hasLayer(cuisineLayer)) {
+//         cuisineLayer.clearLayers()
+//         userSelectionOptions(list)
+//     }
+// }
+
 
 
 
 // get userSearch value
-function getUserSearch(userVal,cleanData) {
+function getUserSearch(userVal, cleanData) {
     let userSearch = []
     for (let i of cleanData) {
         let name = i.name.toLowerCase()
@@ -80,12 +99,25 @@ function getUserSearch(userVal,cleanData) {
             userSearch.push({
                 'name': i.name,
                 'latitude': i.latitude,
-                'longitude':i.longitude,
-                'ratings':i.ratings
+                'longitude': i.longitude,
+                'ratings': i.ratings
             })
         }
     }
-    
+    // user search value does not exists
+    if (userSearch) {
+        checksExistingLayer(currentLayer, userSearch)
+    } else {
+        return userSearch;
+    }
     return userSearch;
-
 }
+
+
+// get GPS Location
+// function displayAlert() {
+
+// }
+
+
+

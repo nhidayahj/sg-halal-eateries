@@ -160,3 +160,8 @@ function getRatingsLatLng(cleanData, ratings) {
   return ratingsLatLng;
   //console.log("Ratings Lat-Lng: " , ratingsLatLng)
 }
+
+// pop-up alerts to display if values not found
+// function displayAlert() {
+
+// }
