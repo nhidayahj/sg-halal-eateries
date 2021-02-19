@@ -6,6 +6,11 @@
   font-family: "Rubik", sans-serif;
   padding-top: 20px;
   text-align: center;
+  font-size:6vw;
+}
+
+@media only screen and (min-width:768px) {
+    #header-title{font-size: 4vw;}
 }
 
 #halal-img {
@@ -22,6 +27,13 @@
 .title-header {
   padding: 0%;
 }
+
+
+.btns {
+    margin-top: 5px;
+}
+
+
 
 /* resizing the header icons  */
 @media only screen and (max-width: 768px) {
@@ -40,13 +52,10 @@
 }
 
 /* resizing search bar and buttons */
-@media only screen and (max-width: 425px) {
-  /* .btns {
-    align-items: center;
-  } */
-  .btns {
-    width: 100%;
+@media only screen and (min-width: 375px) {
+  .btns {align-items: center;
   }
+  
 }
 .search-header {
   margin-left: 20%;
