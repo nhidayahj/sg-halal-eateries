@@ -69,3 +69,23 @@ function addCuisineLayers(cuisineLayer,list){
     } 
 }
 
+
+
+// get userSearch value
+function getUserSearch(userVal,cleanData) {
+    let userSearch = []
+    for (let i of cleanData) {
+        let name = i.name.toLowerCase()
+        if (name.includes(userVal)) {
+            userSearch.push({
+                'name': i.name,
+                'latitude': i.latitude,
+                'longitude':i.longitude,
+                'ratings':i.ratings
+            })
+        }
+    }
+    
+    return userSearch;
+
+}
