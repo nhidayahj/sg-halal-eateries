@@ -37,6 +37,8 @@
                     <div class="row-sm-12 search-bar">
                         <input type="text" class="form-control" placeholder="search by location" onfocus="this.value=''" id="userSearch"/>
                     </div>
+                    <div class="searchResult">
+                    </div>
                     <div class="d-flex justify-content-center btns">
                         <button class="btn btn-primary btn-sm" id="find-btn">Find</button>
                         <button class="btn btn-info btn-sm" id="filter-btn" data-toggle="collapse"
@@ -128,7 +130,9 @@
         </div>
         <!-- map div -->
         <div class="map-area mt-3">
-            <button class="btn btn-outline-info btn-sm d-block" id="reset">Reset Map</button>
+            <div>
+                <button class="btn btn-outline-danger btn-sm" id="reset">Reset Map</button>
+            </div>
             <div id="map"></div>
         </div>
     </div>

@@ -98,10 +98,6 @@ function getUserSearch(userVal, cleanData) {
 }
 
 
-// get GPS Location
-// function displayAlert() {
-
-// }
 
 
 

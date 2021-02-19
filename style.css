@@ -11,6 +11,7 @@
 
 @media only screen and (min-width:768px) {
     #header-title{font-size: 4vw;}
+    
 }
 
 #halal-img {
@@ -28,15 +29,23 @@
   padding: 0%;
 }
 
+#reset{
+    right: 0px;
+}
 
 .btns {
     margin-top: 5px;
 }
 
+
 #reset {
     margin-bottom: 5px;
-    right:0;
 }
+
+.searchResult {
+    display: hidden;
+}
+
 
 /* resizing the header icons  */
 @media only screen and (max-width: 768px) {
@@ -49,6 +58,7 @@
   .header-icon {
     width: 85px;
   }
+  .searchResult{font-size:2vw}
 }
 .header-icon {
   height: auto;

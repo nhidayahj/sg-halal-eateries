@@ -161,6 +161,10 @@ function getRatingsLatLng(cleanData, ratings) {
   //console.log("Ratings Lat-Lng: " , ratingsLatLng)
 }
 
+function clearField() {
+    console.log("clear field")
+}
+
 // pop-up alerts to display if values not found
 // function displayAlert() {
 

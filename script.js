@@ -19,22 +19,32 @@ window.addEventListener("DOMContentLoaded", async () => {
     createCuisineCheckBox(cuisineArr);
 
     // get user inputs    
-    $("#userSearch").keyup(function(event) {
+    $("#userSearch").keyup(function (event) {
         if (event.keyCode === 13) {
             $("#find-btn").click()
         }
     });
 
-    // let count = 0;
-    // let foundValues=[];
-    $("#find-btn").click(function(){
-       let userSearch = document.getElementById('userSearch').value
-       let searchVal = getUserSearch(userSearch, cleanFullData);
+    
+    $("#find-btn").click(function () {
+        let userSearch = document.getElementById('userSearch').value
+        let searchVal = getUserSearch(userSearch, cleanFullData);
         console.log(searchVal)
         if (searchVal) {
-            alert(`There are ${searchVal.length} search values.`);
-        } else if (!searchVal) {
-            alert("No search entry found!")
+            if (searchVal.length > 1) {
+                document.querySelector(".searchResult").innerHTML = `
+                 There are ${searchVal.length} results found
+            `
+            } else if (searchVal.length == 1) {
+                document.querySelector(".searchResult").innerHTML = `
+                There is 1 result found:  
+                <span style="color:blue"> ${ searchVal[0].name } </span>
+                `
+            } else if (searchVal.length < 1) {
+                document.querySelector(".searchResult").innerHTML = `
+                <span style="color:red"> No result found .. </span>
+                `
+            }
         }
     })
 
@@ -98,11 +108,14 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     // resets back to original display after user interaction
     document.querySelector("#reset").addEventListener("click", () => {
+        document.querySelector(".searchResult").innerHTML = ""
+        
         checksExistingLayer(currentLayer, cleanFullData);
-        document.querySelector("#userSearch").value="";
+        document.querySelector("#userSearch").value = "";
     })
-    
+
     document.querySelector("#afford").addEventListener("click", function () {
+        document.querySelector(".searchResult").innerHTML = ""
         let affordPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["affordable"]
@@ -113,6 +126,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.querySelector("#mid_range").addEventListener("click", function () {
+        document.querySelector(".searchResult").innerHTML = ""
         let midPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["mid_range"]
@@ -122,18 +136,21 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById("low").addEventListener("click", function () {
+        document.querySelector(".searchResult").innerHTML = ""
         let lowRatings = getRatingsLatLng(cleanFullData, ratingsList["low"]);
         console.log("Low ratings: ", lowRatings);
         checksExistingLayer(currentLayer, lowRatings);
     });
 
     document.getElementById("medium").addEventListener("click", function () {
+        document.querySelector(".searchResult").innerHTML = ""
         let medRatings = getRatingsLatLng(cleanFullData, ratingsList["medium"]);
         console.log("Medium Ratings: ", medRatings);
         checksExistingLayer(currentLayer, medRatings);
     });
 
     document.getElementById("high").addEventListener("click", function () {
+        document.querySelector(".searchResult").innerHTML = ""
         let highRatings = getRatingsLatLng(cleanFullData, ratingsList["high"]);
         console.log("High Ratings: ", highRatings);
         checksExistingLayer(currentLayer, highRatings);
