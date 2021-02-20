@@ -32,11 +32,11 @@ window.addEventListener("DOMContentLoaded", async () => {
         if (searchVal) {
             if (searchVal.length > 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                 <span style="font-weight:bold; background-color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
+                 <span style="font-weight:bold; color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
             `
             } else if (searchVal.length == 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                <span style="font-weight:bold;background-color:rgb(18, 151, 18)"> 1 search result found .. </span>
+                <span style="font-weight:bold; color:rgb(18, 151, 18)"> 1 search result found .. </span>
                 `
             } else if (searchVal.length < 1) {
                 document.querySelector(".searchResult").innerHTML = `
@@ -46,6 +46,10 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
     })
 
+    let getLocationBtn = document.querySelector("#getLoc")
+    getLocationBtn.addEventListener('click', function(){
+        getLocation();
+    })
 
     //store user's cuisine selection
     let cuisineFilterSelectBtn = document.querySelector(

@@ -42,10 +42,6 @@ body {
   padding: 0%;
 }
 
-.reset{
-    justify-content: flex-end;
-    padding-right: 20px;
-}
 
 .btns {
     margin-top: 5px;
@@ -54,11 +50,20 @@ body {
 .reset {
     background-color: rgba(240, 240, 240, 0.45);
     padding-bottom: 3px;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+#getLoc {
+  
+   margin-right: 20px;
+   margin-bottom: 5px;
 }
 
 #reset {
     margin-bottom: 5px;
 }
+
 
 .searchResult {
     padding-block: 5px;

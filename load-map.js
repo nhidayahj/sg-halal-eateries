@@ -39,6 +39,7 @@ function userSelectionOptions(list) {
 
         //create markers for each
         markers = L.marker([lat, lng], { icon: myIcon })
+        //console.log(markers);
         //create a tooltip for each
         markers.bindTooltip(`
         <p><b>${name}</b></p>
@@ -51,11 +52,13 @@ function userSelectionOptions(list) {
 
 function checksExistingLayer(currentLayer, list) {
     if (map.hasLayer(currentLayer) == false) {
+        // youLayer.clearLayers()
         userSelectionOptions(list)
     } else {
+        youLayer.clearLayers()
         currentLayer.clearLayers()
         userSelectionOptions(list)
-    } 
+    }
 }
 
 let cuisineLayer = L.markerClusterGroup();
@@ -70,6 +73,9 @@ function addCuisineLayers(cuisineLayer, list) {
     } else if (map.hasLayer(showAllLayer)) {
         showAllLayer.clearLayers()
         userSelectionOptions(list)
+    } else if (map.hasLayer(youLayer)) {
+        youLayer.clearLayers()
+        userSelectionOptions()
     }
 }
 
@@ -101,5 +107,34 @@ function getUserSearch(userVal, cleanData) {
 
 
 
+// show yourAreHere marker 
+let youIcon = L.icon({
+    iconUrl: 'images/you.png',
+    iconSize: [32, 32],
+    iconAnchor: [14, 30],
+})
 
+let youLayer = L.layerGroup()
+youLayer.addTo(map)
+
+let yourAreHere = (lat, lng) => {
+    L.marker([lat, lng], { icon: youIcon }).bindPopup("You are here").openPopup().addTo(youLayer);
+}
+map.on('locationfound', yourAreHere);
+
+// get GEO Location 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition)
+    } else {
+        console.log("geo location is not supported")
+    }
+}
+
+function showPosition(position) {
+    let lat = position.coords.latitude;
+    let lng = position.coords.longitude
+    // console.log(" Latitude: " + position.coords.latitude + ", Longitutude: " + position.coords.longitude) 
+    yourAreHere(lat, lng)
+}
 
