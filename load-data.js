@@ -139,6 +139,7 @@ function getPriceRangeLatLng(cleanData, pricelist) {
           latitude: j.latitude,
           longitude: j.longitude,
           ratings: j.ratings,
+          photoURL: j.photoURL
         });
       }
     }

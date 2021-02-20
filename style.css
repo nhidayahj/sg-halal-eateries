@@ -2,7 +2,7 @@ body {
     background-image: url('images/food-bg.jpg');
     background-repeat:no-repeat;
     background-size: cover;
-    
+    background-attachment: fixed;
     
 }
 
