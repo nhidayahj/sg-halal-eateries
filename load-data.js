@@ -17,6 +17,7 @@ function getCleanAdd(data) {
         ratings: data[i].rating,
         priceRange: data[i].priceRange,
         categories: data[i].categories,
+        photoURL: data[i].photoSrc
       });
     } else if (indexComma) {
       clean_add.push({
@@ -25,6 +26,7 @@ function getCleanAdd(data) {
         ratings: data[i].rating,
         priceRange: data[i].priceRange,
         categories: data[i].categories,
+        photoURL: data[i].photoSrc
       });
     }
   }
@@ -55,6 +57,7 @@ async function getUpdatedList(address) {
         ratings: i.ratings,
         priceRange: i.priceRange,
         categories: i.categories,
+        photoURL: i.photoURL,
         postal: result.results[0]["POSTAL"],
         latitude: result.results[0]["LATITUDE"],
         longitude: result.results[0]["LONGITUDE"],
@@ -100,6 +103,8 @@ function createCuisineCheckBox(data) {
     dropdownOption.innerHTML += newCheckBox;
   }
 }
+
+
 
 // get cuisine type from user radio and return its name, add & lat-lng
 

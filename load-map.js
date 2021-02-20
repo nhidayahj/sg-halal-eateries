@@ -22,10 +22,17 @@ let myIcon = L.icon({
     iconAnchor: [14, 30],
 })
 
+// create a card when user clicks on marker
+function displayCards() {
+    console.log("display cards")
+}
 
 
 let currentLayer = L.markerClusterGroup();
 currentLayer.addTo(map)
+
+// markers.on('click', displayCards);
+
 
 function userSelectionOptions(list) {
     let lat = parseFloat("");
@@ -35,7 +42,7 @@ function userSelectionOptions(list) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
-            ratings = i.ratings
+        ratings = i.ratings
 
         //create markers for each
         markers = L.marker([lat, lng], { icon: myIcon })
@@ -46,9 +53,13 @@ function userSelectionOptions(list) {
         <p>Ratings: ${ratings}⭐</p>
         <p>Click for more info</p>
         `).openTooltip()
+        markers.on('click', displayCards)
         markers.addTo(currentLayer)
     }
+    
 }
+
+
 
 function checksExistingLayer(currentLayer, list) {
     if (map.hasLayer(currentLayer) == false) {
@@ -75,7 +86,7 @@ function addCuisineLayers(cuisineLayer, list) {
         userSelectionOptions(list)
     } else if (map.hasLayer(youLayer)) {
         youLayer.clearLayers()
-        userSelectionOptions()
+        userSelectionOptions(list)
     }
 }
 

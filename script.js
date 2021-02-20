@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             $("#find-btn").click()
         }
     });
-    
+
     $("#find-btn").click(function () {
         let userSearch = document.getElementById('userSearch').value
         let searchVal = getUserSearch(userSearch, cleanFullData);
@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     })
 
     let getLocationBtn = document.querySelector("#getLoc")
-    getLocationBtn.addEventListener('click', function(){
+    getLocationBtn.addEventListener('click', function () {
         getLocation();
     })
 
@@ -115,21 +115,43 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.querySelector("#reset").addEventListener("click", () => {
         clearField();
         checksExistingLayer(currentLayer, cleanFullData);
-        
+
     })
 
     document.querySelector("#afford").addEventListener("click", function () {
-        clearField()
+        clearField();
+        let cardContent = document.querySelector(".card-deck");
         let affordPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["affordable"]
         );
+
+        for (let i = 0; i < 10; i++) {
+            //console.log(i);
+            // cardContent = document.querySelector(".card-deck");
+            let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+        }
+
+
         //checks if there is an existing previous layer on map
         console.log("Afford List: ", affordPriceList);
         checksExistingLayer(currentLayer, affordPriceList);
     });
 
     document.querySelector("#mid_range").addEventListener("click", function () {
+
         clearField();
         let midPriceList = getPriceRangeLatLng(
             cleanFullData,

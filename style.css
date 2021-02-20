@@ -137,3 +137,8 @@ body {
 #map {
   height: 75vh;
 }
+
+
+@media only screen and (min-width:768px) {
+    .card-deck{margin-left:3px;}
+}
