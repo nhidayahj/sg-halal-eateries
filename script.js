@@ -26,11 +26,31 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     $("#find-btn").click(function () {
+        let cardContent = document.querySelector(".card-deck");
+        cardContent.innerHTML = " ";
         let userSearch = document.getElementById('userSearch').value
         let searchVal = getUserSearch(userSearch, cleanFullData);
         console.log(searchVal)
+
+        for (let i of searchVal) {
+            let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card" id="${i.name}">
+                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${i.name}</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+        }
+        
         if (searchVal) {
             if (searchVal.length > 1) {
+                
                 document.querySelector(".searchResult").innerHTML = `
                  <span style="font-weight:bold; color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
             `
@@ -121,17 +141,45 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.querySelector("#afford").addEventListener("click", function () {
         clearField();
         let cardContent = document.querySelector(".card-deck");
+        cardContent.innerHTML=" ";
         let affordPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["affordable"]
         );
 
         for (let i of affordPriceList) {
-            //console.log(i);
-            // cardContent = document.querySelector(".card-deck");
             let content = `
             <div class="card-deck col-md-4 mb-3">
-                <div class="card">
+                <div class="card" id="${i.name}">
+                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${i.name}</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+        }
+        //checks if there is an existing previous layer on map
+        console.log("Afford List: ", affordPriceList);
+        checksExistingLayer(currentLayer, affordPriceList);
+    });
+
+    document.querySelector("#mid_range").addEventListener("click", function () {
+        clearField();
+        let cardContent = document.querySelector(".card-deck");
+        cardContent.innerHTML=" ";
+        let midPriceList = getPriceRangeLatLng(
+            cleanFullData,
+            priceList["mid_range"]
+        );
+
+        for (let i of midPriceList) {
+            let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card" id="${i.name}">
                     <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">${i.name}</h5>
@@ -144,40 +192,84 @@ window.addEventListener("DOMContentLoaded", async () => {
             cardContent.innerHTML += content;
         }
 
-
-        //checks if there is an existing previous layer on map
-        console.log("Afford List: ", affordPriceList);
-        checksExistingLayer(currentLayer, affordPriceList);
-    });
-
-    document.querySelector("#mid_range").addEventListener("click", function () {
-
-        clearField();
-        let midPriceList = getPriceRangeLatLng(
-            cleanFullData,
-            priceList["mid_range"]
-        );
         console.log("Mid Range List: ", midPriceList);
         checksExistingLayer(currentLayer, midPriceList);
     });
 
     document.getElementById("low").addEventListener("click", function () {
         clearField();
+        let cardContent = document.querySelector(".card-deck");
+        cardContent.innerHTML=" ";
         let lowRatings = getRatingsLatLng(cleanFullData, ratingsList["low"]);
+
+        for (let i of lowRatings) {
+            let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card" id="${i.name}">
+                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${i.name}</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+        }
+
         console.log("Low ratings: ", lowRatings);
         checksExistingLayer(currentLayer, lowRatings);
     });
 
     document.getElementById("medium").addEventListener("click", function () {
         clearField();
+        let cardContent = document.querySelector(".card-deck");
+        cardContent.innerHTML=" ";
         let medRatings = getRatingsLatLng(cleanFullData, ratingsList["medium"]);
+
+        for (let i of medRatings) {
+            let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card" id="${i.name}">
+                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${i.name}</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+        }
+
         console.log("Medium Ratings: ", medRatings);
         checksExistingLayer(currentLayer, medRatings);
     });
 
     document.getElementById("high").addEventListener("click", function () {
         clearField();
+        let cardContent = document.querySelector(".card-deck");
+        cardContent.innerHTML=" ";
         let highRatings = getRatingsLatLng(cleanFullData, ratingsList["high"]);
+
+        for (let i of highRatings) {
+            let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card" id="${i.name}">
+                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${i.name}</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+        }
+
         console.log("High Ratings: ", highRatings);
         checksExistingLayer(currentLayer, highRatings);
     });

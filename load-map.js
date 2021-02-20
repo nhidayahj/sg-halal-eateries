@@ -22,12 +22,6 @@ let myIcon = L.icon({
     iconAnchor: [14, 30],
 })
 
-// create a card when user clicks on marker
-function displayCards() {
-    console.log("display cards")
-}
-
-
 let currentLayer = L.markerClusterGroup();
 currentLayer.addTo(map)
 
@@ -42,21 +36,24 @@ function userSelectionOptions(list) {
         lat = i.latitude;
         lng = i.longitude;
         name = i.name,
-        ratings = i.ratings
+        ratings = i.ratings,
+        photoURL = i.photoURL
 
         //create markers for each
         markers = L.marker([lat, lng], { icon: myIcon })
         //console.log(markers);
         //create a tooltip for each
-        markers.bindTooltip(`
+        markers.bindPopup(`
         <p><b>${name}</b></p>
+        <img src="${photoURL}" style="width:150px;height:150px"/>
         <p>Ratings: ${ratings}⭐</p>
-        <p>Click for more info</p>
-        `).openTooltip()
-        markers.on('click', displayCards)
+        <a href="#${name}">Link</a>
+        `).openPopup()
+        // markers.on('click', displayCards)
         markers.addTo(currentLayer)
+        
     }
-    
+
 }
 
 
@@ -103,7 +100,9 @@ function getUserSearch(userVal, cleanData) {
                 'name': i.name,
                 'latitude': i.latitude,
                 'longitude': i.longitude,
-                'ratings': i.ratings
+                'ratings': i.ratings,
+                'address':i.full_address,
+                'photoURL':i.photoURL
             })
         }
     }

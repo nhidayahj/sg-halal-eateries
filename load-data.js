@@ -120,6 +120,7 @@ function getCuisineSelection(userSelect) {
           longitude: i.longitude,
           ratings: i.ratings,
           categories: i.categories,
+          photoURL: i.photoURL
         });
       }
     }
@@ -159,6 +160,7 @@ function getRatingsLatLng(cleanData, ratings) {
           latitude: j.latitude,
           longitude: j.longitude,
           ratings: j.ratings,
+          photoURL:j.photoURL
         });
       }
     }
