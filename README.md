@@ -98,7 +98,7 @@ concept is implemented to quickly navigate users from the cards and back to the 
 
 Bootstrap framework is used to aid in the visual responsiveness of the layout.
 
-
+![all](https://user-images.githubusercontent.com/60766668/108634598-44605a80-74b5-11eb-8d84-4b9df4d4905e.png)
 ###  Other Future Features 
 Future works to be done is to have a distance/radius algoritm in identifying nearest food stalls based on a 
 range of distances that users can select. 
