@@ -17,7 +17,8 @@ function getCleanAdd(data) {
         ratings: data[i].rating,
         priceRange: data[i].priceRange,
         categories: data[i].categories,
-        photoURL: data[i].photoSrc
+        photoURL: data[i].photoSrc,
+        neighborhood: data[i].neighborhoods[0]
       });
     } else if (indexComma) {
       clean_add.push({
@@ -26,7 +27,8 @@ function getCleanAdd(data) {
         ratings: data[i].rating,
         priceRange: data[i].priceRange,
         categories: data[i].categories,
-        photoURL: data[i].photoSrc
+        photoURL: data[i].photoSrc,
+        neighborhood: data[i].neighborhoods[0]
       });
     }
   }
@@ -61,6 +63,7 @@ async function getUpdatedList(address) {
         postal: result.results[0]["POSTAL"],
         latitude: result.results[0]["LATITUDE"],
         longitude: result.results[0]["LONGITUDE"],
+        neighborhood: i.neighborhood,
       });
     }
   }
@@ -73,8 +76,6 @@ async function getUpdatedList(address) {
 function getCuisineType(data) {
   //console.log("GetCuisineType: ", data);
   let cuisineArr = [];
-  //let listOfPlaces = await loadData();
-  //   let allBusinesses = listOfPlaces.moreBusinesses;
   for (let i of data) {
     for (let x of i.categories) {
       if (x.title == "Halal") {
@@ -120,7 +121,9 @@ function getCuisineSelection(userSelect) {
           longitude: i.longitude,
           ratings: i.ratings,
           categories: i.categories,
-          photoURL: i.photoURL
+          photoURL: i.photoURL,
+          address: i.full_address,
+          neighborhood: i.neighborhood
         });
       }
     }
@@ -140,7 +143,9 @@ function getPriceRangeLatLng(cleanData, pricelist) {
           latitude: j.latitude,
           longitude: j.longitude,
           ratings: j.ratings,
-          photoURL: j.photoURL
+          photoURL: j.photoURL,
+          address: j.full_address,
+          neighborhood: j.neighborhood
         });
       }
     }
@@ -160,7 +165,9 @@ function getRatingsLatLng(cleanData, ratings) {
           latitude: j.latitude,
           longitude: j.longitude,
           ratings: j.ratings,
-          photoURL:j.photoURL
+          photoURL:j.photoURL,
+          address: j.full_address,
+          neighborhood: j.neighborhood
         });
       }
     }
@@ -169,7 +176,32 @@ function getRatingsLatLng(cleanData, ratings) {
   //console.log("Ratings Lat-Lng: " , ratingsLatLng)
 }
 
+function displayCards(list) {
+    let cardContent = document.querySelector(".card-deck");
+    cardContent.innerHTML=" ";
 
+    for (let i of list) {
+         let content = `
+            <div class="card-deck col-md-4 mb-3">
+                <div class="card" id="${i.name}">
+                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
+                    <div class="card-body" style="padding:3px">
+                        <h5 class="card-title">${i.name}</h5>
+                        <p class="card-text">
+                            <ul>Address:
+                                <li>${i.address}</li>
+                            </ul>
+                            <ul>Neighborhood
+                                <li>${i.neighborhood}</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            `
+            cardContent.innerHTML += content;
+    }
+}
 
 function clearField() {
     document.querySelector("#userSearch").value="search by keywords";

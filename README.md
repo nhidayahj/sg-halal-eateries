@@ -75,7 +75,7 @@ the stalls.
 The page is first loaded displaying all the available Halal eateries in Singapore on the map. The map is then dynamically 
 altered based on the user selection from the filter drpdown menus or by searching through the search bar.
 
-There are 3 dropdown menus are mutually exclusive and categorise by 
+There are 3 dropdown menus are mutually exclusive and categorise by; 
 1. Cuisine types as a form of radio buttons. 
 2. Price range 
 3. Ratings with a maximum of 5 stars
@@ -86,7 +86,7 @@ in these popup, which will direct them to a deck of cards below for users to vie
 
 
 # Skeleton 
-"" 
+
 
 
 
@@ -108,8 +108,8 @@ in these popup, which will direct them to a deck of cards below for users to vie
 3. Mapbox 
 
 # Credits 
-- flaticons
-- background image 
+1. Flaticons
+2. Background Image 
 - 
 
 # Acknowledgements 

@@ -9,48 +9,29 @@ window.addEventListener("DOMContentLoaded", async () => {
     cleanFullData = await getUpdatedList(listOfPlaces);
     console.log("clean list: ", cleanFullData);
 
-
-
+    // display all cards
+    displayCards(cleanFullData);
 
     let cuisineArr = getCuisineType(cleanFullData);
-    //console.log("all cuisine:", cuisineArr);
-
     // display cuisine checkbox in Cuisine filter
     createCuisineCheckBox(cuisineArr);
 
     // get user inputs    
     $("#userSearch").keyup(function (event) {
+        // when use clicks on 'Enter key'
         if (event.keyCode === 13) {
             $("#find-btn").click()
         }
     });
 
     $("#find-btn").click(function () {
-        let cardContent = document.querySelector(".card-deck");
-        cardContent.innerHTML = " ";
         let userSearch = document.getElementById('userSearch').value
         let searchVal = getUserSearch(userSearch, cleanFullData);
         console.log(searchVal)
-
-        for (let i of searchVal) {
-            let content = `
-            <div class="card-deck col-md-4 mb-3">
-                <div class="card" id="${i.name}">
-                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${i.name}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            `
-            cardContent.innerHTML += content;
-        }
+        displayCards(searchVal)
         
         if (searchVal) {
             if (searchVal.length > 1) {
-                
                 document.querySelector(".searchResult").innerHTML = `
                  <span style="font-weight:bold; color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
             `
@@ -87,6 +68,7 @@ window.addEventListener("DOMContentLoaded", async () => {
                 userSelect = getCuisineSelection(i.value);
             }
         }
+        displayCards(userSelect);
         addCuisineLayers(cuisineLayer, userSelect);
     });
 
@@ -134,34 +116,20 @@ window.addEventListener("DOMContentLoaded", async () => {
     // resets back to original display after user interaction
     document.querySelector("#reset").addEventListener("click", () => {
         clearField();
+        displayCards(cleanFullData);
         checksExistingLayer(currentLayer, cleanFullData);
-
     })
 
     document.querySelector("#afford").addEventListener("click", function () {
         clearField();
-        let cardContent = document.querySelector(".card-deck");
-        cardContent.innerHTML=" ";
         let affordPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["affordable"]
         );
 
-        for (let i of affordPriceList) {
-            let content = `
-            <div class="card-deck col-md-4 mb-3">
-                <div class="card" id="${i.name}">
-                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${i.name}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            `
-            cardContent.innerHTML += content;
-        }
+        //display all cards 
+        displayCards(affordPriceList); 
+
         //checks if there is an existing previous layer on map
         console.log("Afford List: ", affordPriceList);
         checksExistingLayer(currentLayer, affordPriceList);
@@ -169,54 +137,28 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     document.querySelector("#mid_range").addEventListener("click", function () {
         clearField();
-        let cardContent = document.querySelector(".card-deck");
-        cardContent.innerHTML=" ";
         let midPriceList = getPriceRangeLatLng(
             cleanFullData,
             priceList["mid_range"]
         );
-
-        for (let i of midPriceList) {
-            let content = `
-            <div class="card-deck col-md-4 mb-3">
-                <div class="card" id="${i.name}">
-                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${i.name}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            `
-            cardContent.innerHTML += content;
-        }
-
+        displayCards(midPriceList);
         console.log("Mid Range List: ", midPriceList);
         checksExistingLayer(currentLayer, midPriceList);
     });
 
+    document.getElementById("exp").addEventListener('click', () => {
+        alert("Data not available currently.")
+        let nodata = [];
+        checksExistingLayer(currentLayer, nodata);
+        
+    })
+
+
     document.getElementById("low").addEventListener("click", function () {
         clearField();
-        let cardContent = document.querySelector(".card-deck");
-        cardContent.innerHTML=" ";
         let lowRatings = getRatingsLatLng(cleanFullData, ratingsList["low"]);
 
-        for (let i of lowRatings) {
-            let content = `
-            <div class="card-deck col-md-4 mb-3">
-                <div class="card" id="${i.name}">
-                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${i.name}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            `
-            cardContent.innerHTML += content;
-        }
+        displayCards(lowRatings);
 
         console.log("Low ratings: ", lowRatings);
         checksExistingLayer(currentLayer, lowRatings);
@@ -224,52 +166,17 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("medium").addEventListener("click", function () {
         clearField();
-        let cardContent = document.querySelector(".card-deck");
-        cardContent.innerHTML=" ";
         let medRatings = getRatingsLatLng(cleanFullData, ratingsList["medium"]);
 
-        for (let i of medRatings) {
-            let content = `
-            <div class="card-deck col-md-4 mb-3">
-                <div class="card" id="${i.name}">
-                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${i.name}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            `
-            cardContent.innerHTML += content;
-        }
-
+        displayCards(medRatings);
         console.log("Medium Ratings: ", medRatings);
         checksExistingLayer(currentLayer, medRatings);
     });
 
     document.getElementById("high").addEventListener("click", function () {
         clearField();
-        let cardContent = document.querySelector(".card-deck");
-        cardContent.innerHTML=" ";
         let highRatings = getRatingsLatLng(cleanFullData, ratingsList["high"]);
-
-        for (let i of highRatings) {
-            let content = `
-            <div class="card-deck col-md-4 mb-3">
-                <div class="card" id="${i.name}">
-                    <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${i.name}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            `
-            cardContent.innerHTML += content;
-        }
-
+        displayCards(highRatings);
         console.log("High Ratings: ", highRatings);
         checksExistingLayer(currentLayer, highRatings);
     });

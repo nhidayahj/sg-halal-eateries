@@ -47,7 +47,7 @@ function userSelectionOptions(list) {
         <p><b>${name}</b></p>
         <img src="${photoURL}" style="width:150px;height:150px"/>
         <p>Ratings: ${ratings}⭐</p>
-        <a href="#${name}">Link</a>
+        Click <a href=" #${name} ">here</a> for more information.
         `).openPopup()
         // markers.on('click', displayCards)
         markers.addTo(currentLayer)
@@ -102,7 +102,8 @@ function getUserSearch(userVal, cleanData) {
                 'longitude': i.longitude,
                 'ratings': i.ratings,
                 'address':i.full_address,
-                'photoURL':i.photoURL
+                'photoURL':i.photoURL,
+                'neighborhood':i.neighborhood
             })
         }
     }
