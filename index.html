@@ -19,6 +19,7 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link rel="stylesheet" href="style.css" />
 
@@ -113,7 +114,7 @@
                             <button class="dropdown-item price-item" id="mid_range">
                                 $$
                             </button>
-                            <button class="dropdown-item price-item" id="exp">$$$</button>
+                            <button onclick="document.getElementById('alert-modal').style.display='block'" class="dropdown-item price-item" id="exp">$$$</button>
                         </div>
                     </div>
 
@@ -141,11 +142,26 @@
         </div>
     </div>
 
+
+    <!-- alert modal -->
+    <div id="alert-modal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-red">
+                <span onclick="document.getElementById('alert-modal').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+                <h3>Data not available</h3>
+            </header>
+            <div class="w3-container">
+                <p></p>
+                <p>No data yet</p>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid display-cards">
         <div class="card-deck">
-
+            <!-- display of stall card decks -->
         </div>
-
     </div>
 
 

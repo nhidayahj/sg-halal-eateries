@@ -13,7 +13,7 @@ function getCleanAdd(data) {
     if (indexComma == -1) {
       clean_add.push({
         name: data[i].name,
-        full_address: data[i].addressLine1,
+        address: data[i].addressLine1,
         ratings: data[i].rating,
         priceRange: data[i].priceRange,
         categories: data[i].categories,
@@ -23,7 +23,7 @@ function getCleanAdd(data) {
     } else if (indexComma) {
       clean_add.push({
         name: data[i].name,
-        full_address: data[i].addressLine1.slice(0, indexComma),
+        address: data[i].addressLine1.slice(0, indexComma),
         ratings: data[i].rating,
         priceRange: data[i].priceRange,
         categories: data[i].categories,
@@ -33,7 +33,7 @@ function getCleanAdd(data) {
     }
   }
   for (let i = 0; i < clean_add.length; i++) {
-    if (clean_add[i].full_address == "2") {
+    if (clean_add[i].address == "2") {
       clean_add.splice(i, 1);
     }
   }
@@ -44,10 +44,10 @@ function getCleanAdd(data) {
 let newLatLngObj = [];
 //update the clean add list
 
-async function getUpdatedList(address) {
-  let cleanAdd = getCleanAdd(address);
+async function getUpdatedList(list) {
+  let cleanAdd = getCleanAdd(list);
   for (let i of cleanAdd) {
-    let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.full_address}&returnGeom=Y&getAddrDetails=Y`;
+    let mapUrl = `https://developers.onemap.sg/commonapi/search?searchVal=${i.address}&returnGeom=Y&getAddrDetails=Y`;
     let response = await axios.get(mapUrl);
     let result = response.data;
     //console.log("result: ", result)
@@ -55,7 +55,7 @@ async function getUpdatedList(address) {
     if (result.found) {
       newLatLngObj.push({
         name: i.name,
-        full_address: result.results[0]["ADDRESS"],
+        address: result.results[0]["ADDRESS"],
         ratings: i.ratings,
         priceRange: i.priceRange,
         categories: i.categories,
@@ -122,7 +122,7 @@ function getCuisineSelection(userSelect) {
           ratings: i.ratings,
           categories: i.categories,
           photoURL: i.photoURL,
-          address: i.full_address,
+          address: i.address,
           neighborhood: i.neighborhood
         });
       }
@@ -144,7 +144,7 @@ function getPriceRangeLatLng(cleanData, pricelist) {
           longitude: j.longitude,
           ratings: j.ratings,
           photoURL: j.photoURL,
-          address: j.full_address,
+          address: j.address,
           neighborhood: j.neighborhood
         });
       }
@@ -166,7 +166,7 @@ function getRatingsLatLng(cleanData, ratings) {
           longitude: j.longitude,
           ratings: j.ratings,
           photoURL:j.photoURL,
-          address: j.full_address,
+          address: j.address,
           neighborhood: j.neighborhood
         });
       }

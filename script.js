@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         let searchVal = getUserSearch(userSearch, cleanFullData);
         console.log(searchVal)
         displayCards(searchVal)
-        
+
         if (searchVal) {
             if (searchVal.length > 1) {
                 document.querySelector(".searchResult").innerHTML = `
@@ -128,7 +128,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         );
 
         //display all cards 
-        displayCards(affordPriceList); 
+        displayCards(affordPriceList);
 
         //checks if there is an existing previous layer on map
         console.log("Afford List: ", affordPriceList);
@@ -146,13 +146,17 @@ window.addEventListener("DOMContentLoaded", async () => {
         checksExistingLayer(currentLayer, midPriceList);
     });
 
-    document.getElementById("exp").addEventListener('click', () => {
-        alert("Data not available currently.")
-        let nodata = [];
-        checksExistingLayer(currentLayer, nodata);
-        
-    })
-
+    let alertModal = document.getElementById('alert-modal')
+    $("#alert-modal").click(function (event) {
+        // when use clicks on 'Enter key'
+        if (event.target == alertModal) {
+            alertModal.style.display = 'none';
+            let nodata = [];
+            let cardContent = document.querySelector(".card-deck");
+            cardContent.innerHTML = " ";
+            checksExistingLayer(currentLayer, nodata);
+        }
+    });
 
     document.getElementById("low").addEventListener("click", function () {
         clearField();

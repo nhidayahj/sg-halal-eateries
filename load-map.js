@@ -101,7 +101,7 @@ function getUserSearch(userVal, cleanData) {
                 'latitude': i.latitude,
                 'longitude': i.longitude,
                 'ratings': i.ratings,
-                'address':i.full_address,
+                'address':i.address,
                 'photoURL':i.photoURL,
                 'neighborhood':i.neighborhood
             })
