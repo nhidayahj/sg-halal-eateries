@@ -44,14 +44,8 @@ also recognize other Halal stalls that are outside of malls, and that is suffici
 the hunger and craving needs' of users. 
 
 In the future, the hope of this application can be a reference point for aspiring food owners in their planning and have an overall
-outlook of the distribution of Halal eateries in Singapore. 
-
-# Scope 
-""
-# Structure 
-""
-# Skeleton 
-"" 
+outlook of the distribution of Halal eateries in Singapore. It can also aid in identifying competition to similar food establishment, but will
+also add to the variety and expansion of setting up a stall in the area. 
 
 ## User Stories 
 1. As a user, I want to be able to quickly view and locate Halal places within the area or in Singapore
@@ -60,6 +54,29 @@ outlook of the distribution of Halal eateries in Singapore.
 hawker places, malls or cafes.
 4. As a user, I want to be able to see the addresses of these places and have a link that can direct me to their 
 official social media pages.
+
+
+# Scope 
+This application must be able to perform the following functions:
+### Functional Requirements 
+1. Flexibility for users to have the options to narrow their search findings by using the Filter options
+2. The search function is able to accept and store various search keywords and still provide similar results 
+
+### Content Requirements 
+1. Since this application is built to provide convenience and quick access, it should be able 
+to display responsiveness in different screensizes, and more appropriately on mobile devices and tablets. 
+2. Buttons and navigation of the page is appropriately sized to ensure readability and is easily clickable.
+3. Addresses and links' to restaurants social media sites is valid and available for users to find out more about 
+the stalls. 
+4. Displaying alerts if search is not valid or when data is not yet available to be displayed (for future updates)
+5. Users can have a quick glance of important details of the restaurants
+
+# Structure 
+""
+# Skeleton 
+"" 
+
+
 
 
 # Technologies Used
