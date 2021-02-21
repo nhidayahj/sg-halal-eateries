@@ -1,6 +1,6 @@
 # SG Halal Eateries 
 
-This project targets the Muslim communities in Singapore in easing their food searches for the nearest and all 
+This project targets the Muslim community in Singapore in easing their food searches for the nearest and all 
 available Halal eateries in the area. This application also hopes that it will come in handy and beneficial to 
 other Non-Muslims in finding food places if they plan to have a lunch out with their fellow Muslim colleagues 
 and friends. 
@@ -82,19 +82,26 @@ There are 3 dropdown menus are mutually exclusive and categorise by;
 
 From the map, it displays existing restaurants in Singapore. When user clicks on any of these markers, a popup 
 will appear that provides all relevant information a user wants to know about the stall. A link is also embedding 
-in these popup, which will direct them to a deck of cards below for users to view restaurants' images and customers reviews.
+in these popup, which will direct them to a deck of cards below for users to view restaurants' images.
 
 
 # Skeleton 
+The two top logos is the visual representation of what the webpage service. A Halal logo and an image of a 
+restaurant. The background image chosen is due to the vibrate and deep colors of the food condiments that brings contrast to the 
+lighter and brighter buttons/maps colors. 
+
 The design plan of the webpage has a page header that groups together the page title, search bar, page icons 
-and the main search buttons: 
+and the main search buttons, while the map and card decks are designed separately. 
+
+This is a single webpage that displays the both the map and the corresponding images/cards to the markers. A bookmark 
+concept is implemented to quickly navigate users from the cards and back to the map / top of page. 
+
+Bootstrap framework is used to aid in the visual responsiveness of the layout.
 
 
-
-
-
-
-
+###  Other Future Features 
+Future works to be done is to have a distance/radius algoritm in identifying nearest food stalls based on a 
+range of distances that users can select. 
 
 # Technologies Used
 1. HTML / CSS 
@@ -113,10 +120,16 @@ and the main search buttons:
 3. Mapbox 
 
 # Credits 
-1. Flaticons
-2. Background Image 
-- 
+Icons & Background image:
+1. [Flaticons](https://www.flaticon.com/)
+2. [Freepik](https://www.freepik.com)
+3. [Pinterest](https://www.pinterest.com/pin/643381496745735949/) 
+
 
 # Acknowledgements 
+- Mr Paul Chor, Instructor 
+- Mr Ace Liang, TA 
+- Fellow classmates for their guidance, suggestions and opinios
+
 
 

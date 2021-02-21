@@ -179,7 +179,6 @@ function getRatingsLatLng(cleanData, ratings) {
 function displayCards(list) {
     let cardContent = document.querySelector(".card-deck");
     cardContent.innerHTML=" ";
-
     for (let i of list) {
          let content = `
             <div class="card-deck col-md-4 mb-3">
@@ -194,6 +193,7 @@ function displayCards(list) {
                             <ul>Neighborhood
                                 <li>${i.neighborhood}</li>
                             </ul>
+                            <a href="#map">Back to map</a>
                         </p>
                     </div>
                 </div>
