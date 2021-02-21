@@ -72,7 +72,19 @@ the stalls.
 5. Users can have a quick glance of important details of the restaurants
 
 # Structure 
-""
+The page is first loaded displaying all the available Halal eateries in Singapore on the map. The map is then dynamically 
+altered based on the user selection from the filter drpdown menus or by searching through the search bar.
+
+There are 3 dropdown menus are mutually exclusive and categorise by 
+1. Cuisine types as a form of radio buttons. 
+2. Price range 
+3. Ratings with a maximum of 5 stars
+
+From the map, it displays existing restaurants in Singapore. When user clicks on any of these markers, a popup 
+will appear that provides all relevant information a user wants to know about the stall. A link is also embedding 
+in these popup, which will direct them to a deck of cards below for users to view restaurants' images and customers reviews.
+
+
 # Skeleton 
 "" 
 
@@ -95,9 +107,11 @@ the stalls.
 2. Open Street Map
 3. Mapbox 
 
-# Acknowledgements 
-
 # Credits 
 - flaticons
 - background image 
 - 
+
+# Acknowledgements 
+
+
