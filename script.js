@@ -154,6 +154,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             let nodata = [];
             let cardContent = document.querySelector(".card-deck");
             cardContent.innerHTML = " ";
+            clearField();
             checksExistingLayer(currentLayer, nodata);
         }
     });
