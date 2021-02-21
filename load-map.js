@@ -94,7 +94,7 @@ function getUserSearch(userVal, cleanData) {
     let userval = userVal.toLowerCase()
     for (let i of cleanData) {
         let name = i.name.toLowerCase()
-        let address = i.full_address.toLowerCase()
+        let address = i.address.toLowerCase()
         if (name.includes(userval) || (address.includes(userval))) {
             userSearch.push({
                 'name': i.name,
