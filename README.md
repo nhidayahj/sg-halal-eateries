@@ -86,6 +86,11 @@ in these popup, which will direct them to a deck of cards below for users to vie
 
 
 # Skeleton 
+The design plan of the webpage has a page header that groups together the page title, search bar, page icons 
+and the main search buttons: 
+
+
+
 
 
 

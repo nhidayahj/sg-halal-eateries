@@ -185,7 +185,7 @@ function displayCards(list) {
             <div class="card-deck col-md-4 mb-3">
                 <div class="card" id="${i.name}">
                     <img class="card-img-top" src="${i.photoURL}" alt="Card image cap">
-                    <div class="card-body" style="padding:3px">
+                    <div class="card-body">
                         <h5 class="card-title">${i.name}</h5>
                         <p class="card-text">
                             <ul>Address:
