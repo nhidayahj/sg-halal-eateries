@@ -1,5 +1,5 @@
 body {
-    background-image: url('images/food-bg.jpg');
+    background-image: url('images/food-bg1.jpg');
     background-repeat:no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -7,11 +7,11 @@ body {
     background-color: rgba(0, 0, 0, 0.788);
 }
 
-@media only screen and (max-width:425px) {
+/* @media only screen and (min-height:600px) {
     body {
-        background-size: auto;
+        background-size:;
     }
-}
+} */
 
 
 .page-header {

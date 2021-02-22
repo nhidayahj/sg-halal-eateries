@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         if (searchVal) {
             if (searchVal.length > 1) {
                 document.querySelector(".searchResult").innerHTML = `
-                 <span style="font-weight:bold; color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
+                 <span style="font-weight:bold;color:rgb(18, 151, 18)">${searchVal.length} search results found .. </span>
             `
             } else if (searchVal.length == 1) {
                 document.querySelector(".searchResult").innerHTML = `
