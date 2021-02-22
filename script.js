@@ -56,6 +56,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     let cuisineFilterSelectBtn = document.querySelector(
         "#cuisineFilterSuccessBtn"
     );
+
+    
+    
     cuisineFilterSelectBtn.addEventListener("click", () => {
         let userSelect;
         document.querySelector("#userSearch").value = "search by keywords";
