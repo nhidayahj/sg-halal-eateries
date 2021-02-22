@@ -193,7 +193,8 @@ function displayCards(list) {
                             <ul>Neighborhood
                                 <li>${i.neighborhood}</li>
                             </ul>
-                            <a href="#map">Back to map</a>
+                            <a href="#map" class="btn btn-outline-info btn-sm" role="button">
+                            Back to map</a>
                         </p>
                     </div>
                 </div>

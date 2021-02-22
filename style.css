@@ -7,9 +7,10 @@ body {
     background-color: rgba(0, 0, 0, 0.788);
 }
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:375px) {
     body {
         background-image: url('images/food-bg1.jpg');
+        background-size: cover;
     }
 }
 
@@ -18,7 +19,7 @@ body {
    margin-top: 5px;
    margin-left: 1px;
    margin-right: 1px;
-   background-color: rgba(240, 240, 240, 0.45);
+   background-color: rgba(240, 240, 240, 0.75);
 }
 
 #header-title {
@@ -27,6 +28,7 @@ body {
   text-align: center;
   font-size:6vw;
   font-weight: bold;
+ 
 }
 
 @media only screen and (min-width:768px) {
@@ -55,7 +57,7 @@ body {
 }
 
 .reset {
-    background-color: rgba(240, 240, 240, 0.45);
+    background-color: rgba(240, 240, 240, 0.75);
     padding-bottom: 3px;
     justify-content: flex-end;
     padding-right: 20px;
@@ -74,7 +76,7 @@ body {
 
 .searchResult {
     padding-block: 5px;
-    
+    text-align: center;
 }
 
 
@@ -95,7 +97,7 @@ body {
   .header-icon {
     width: 85px;
   }
-  .searchResult{font-size:20px}
+  .searchResult{font-size:15px}
   
 }
 .header-icon {
@@ -133,7 +135,7 @@ body {
 }
 
 #filterOptions {
-  background-color: rgba(240, 240, 240, 0.45);
+  background-color: rgba(240, 240, 240, 0.75);
   font-family: "Rubik", sans-serif;
   padding-top: 5px;
   padding-inline-start: 0%;
