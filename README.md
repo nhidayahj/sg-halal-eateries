@@ -72,20 +72,50 @@ the stalls.
 5. Users can have a quick glance of important details of the restaurants
 
 # Structure 
+## Content Information
 The page is first loaded displaying all the available Halal eateries in Singapore on the map. The map is then dynamically 
 altered based on the user selection from the filter drpdown menus or by searching through the search bar.
 
-There are 3 dropdown menus are mutually exclusive and categorise by; 
-1. Cuisine types as a form of radio buttons. 
-2. Price range 
-3. Ratings with a maximum of 5 stars
+#### Information required for map interaction 
+For the map to be displayed with the relevant markers, 
+Users can use these 4 ways to interact; 
+1. Using the search bar - keywords of address , type of food or name of restaurant 
+2. Cuisine types - dropdown as a form of radio buttons
+3. Price range - dropdowns
+4. Ratings - dropdowns, with 'High' denoting max of 5 stars
 
-From the map, it displays existing restaurants in Singapore. When user clicks on any of these markers, a popup 
+In any of the above inputs, if a restaurant exist,  it displays a marker in the map. When user clicks on any of these markers, a popup 
 will appear that provides all relevant information a user wants to know about the stall. A link is also embedding 
 in these popup, which will direct them to a deck of cards below for users to view restaurants' images.
 
+#### Images for map & cards
+All images displayed were taken directly from the source of data, that has a photo URL link provided.
+These images are used to provide a more visual appearance that fits well in a restaurant-searching webpage. 
+
+## Content Structure 
+This webpage follows a **Linear Structure** from Top to Bottom, single webpage.
+
+1. Top Header:
+
+- The top section of the webpage contains the main user interations of the search bar and the filter dropdown options. 
+- The Find and Filter button is first displayed on first load.
+- The Filter button will then open the collapsible menus. This is maintain a clean look in the header section. 
+
+2. Mid Section:
+- The map takes up the main display where users can view the whole of Singapore map. It is zoomed out on first load, 
+so users are able to view all pinned markers on the map. 
+- The markers can be viewed individually or in a cluster depending on the zoom level of map which is interactive.
+- The map also holds in the information pop-up, when use clicks on any of the markers. These pop-ups fits nicely 
+within the width and height of the map dimension. 
+
+3. Last Section:
+- This section displays more relevant information of the restaurants in a card version. 
+- The cards contains the addresses and links that user may want to obtain when deciding for a place to eat. 
 
 # Skeleton 
+## Interface Design 
+
+#### Header Design 
 The two top logos is the visual representation of what the webpage service. A Halal logo and an image of a 
 restaurant. The background image chosen is due to the vibrate and deep colors of the food condiments that brings contrast to the 
 lighter and brighter buttons/maps colors. 
@@ -93,15 +123,66 @@ lighter and brighter buttons/maps colors.
 The design plan of the webpage has a page header that groups together the page title, search bar, page icons 
 and the main search buttons, while the map and card decks are designed separately. 
 
+The filter dropdowns are intentionally grouped in a collapsible menu to allow white space in the header section when 
+webpage is viewed in a smaller screen. Only when user wishes to interact, it will display. 
+
+#### Map & Cards Design
 This is a single webpage that displays the both the map and the corresponding images/cards to the markers. A bookmark 
 concept is implemented to quickly navigate users from the cards and back to the map / top of page. 
 
 Bootstrap framework is used to aid in the visual responsiveness of the layout.
 
 ![all](https://user-images.githubusercontent.com/60766668/108634676-a1f4a700-74b5-11eb-95cf-246d82b923bb.png)
-###  Other Future Features 
+####  Other Future Features / Implementations 
 Future works to be done is to have a distance/radius algoritm in identifying nearest food stalls based on a 
 range of distances that users can select. 
+
+# Surface 
+## Theme 
+The theme that is chosen has to vibrant and appealing as this webpage represents a happy mood when it comes to eating 
+and finding food. Hence, the background image projects the vibrancy from the colors of food spices as the borders 
+of the pages, against a light colors on a slightly opaque overlay. 
+
+## Colors
+The colors are consistent for visual communication. 
+- Shades of blue is an all general color function 
+- Green denotes that the search input value is valid and can be read
+- Red denotes a warning or alert indicating if data is not captured or no available data or requires caution such 
+as preventing reseting of map 
+- Markers on the maps provides constrast to quickly be identified and recognised on the map.
+
+# Features
+## Content 
+The webpage contains all the relevant information and data required for user to use in a food searching 
+application with appropriate filters, images and contents.
+
+## Responsiveness 
+The webpage is able to display all the above contents nicely in various screen sizes. Buttons, images and maps 
+are scaled down nicely for smooth navigation. 
+
+## Map overview
+Upon first load, map is already pinned with existing restaurants in Singapore, also an indication to user
+that the page is loaded.
+
+# Testing 
+## Functionality Test 
+|Category|Actions/Inputs|Output/Errors|
+|--------------:|----------------------:|:--------------------------------:|
+|Overall        |   Mobile Responsive   |No display errors                |
+|Search bar     |   Partial Address     |   Green(valid): Red(invalid) |
+|               |   Partial restaurant name|                          |
+|Nav bar        |    Filter buttons        | Displays all 3 dropdowns |
+| Map           |   Page Loaded      | All pins & cluster
+
+
+
+# Deployment 
+ Consistently maintained to ensure that all changes has been save and push to GitHub. 
+
+ The webpage is deployed and capable to view online. 
+
+There is only one branch used in this application.
+
 
 # Technologies Used
 1. HTML / CSS 
@@ -129,6 +210,7 @@ Icons & Background image:
 # Acknowledgements 
 - Mr Paul Chor, Instructor 
 - Mr Ace Liang, TA 
+- Mr Shun, TA
 - Fellow classmates for their guidance, suggestions and opinios
 
 
